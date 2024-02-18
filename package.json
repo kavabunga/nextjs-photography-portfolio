@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "stylelint": "stylelint '**/*.{css,scss}'",
+    "commit": "cz",
     "prepare": "husky install"
   },
   "dependencies": {
