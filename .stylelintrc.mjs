@@ -10,6 +10,7 @@ const styleLintConfig = {
           'Expected custom property name to be camelCase or snake_case. PascalCase and snake-case are prohibited.',
       },
     ],
+    'media-feature-range-notation': 'prefix',
   },
 };
 
