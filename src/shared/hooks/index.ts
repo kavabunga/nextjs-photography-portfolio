@@ -1,1 +1,2 @@
-export { useSessionStorage } from './use-session';
+export { useSessionStorage } from './use-session-storage';
+export { useLocalStorage } from './use-local-storage';

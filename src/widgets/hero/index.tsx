@@ -1,19 +1,24 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useNavigation } from '@/shared/providers';
-import { useSessionStorage } from '@/shared/hooks';
 
 import { HeroWidgetUi } from './ui';
 
 export function HeroWidget() {
   const { openNavigation } = useNavigation();
-  const session = useSessionStorage('session-opened');
+  const [session, setSession] = useState(false);
 
-  if (session) {
-    openNavigation();
-  }
+  useEffect(() => {
+    const storageSession = window.sessionStorage.getItem('session-opened');
+    if (storageSession) {
+      setSession(true);
+    }
+    if (session) {
+      openNavigation();
+    }
+  }, [openNavigation, session]);
 
   const handleClick = useCallback(() => {
     openNavigation();

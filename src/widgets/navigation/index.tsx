@@ -4,6 +4,8 @@ import { useCallback } from 'react';
 
 import { usePathname } from 'next/navigation';
 
+import { AnimatePresence } from 'framer-motion';
+
 import { useNavigation } from '@/shared/providers';
 import { projectPagesCategories, infoPagesCategories } from '@/shared/data';
 
@@ -18,13 +20,15 @@ export function NavigationWidget() {
   }, [closeNavigation]);
 
   return (
-    isNavigationOpen && (
-      <NavigationWidgetUi
-        projectPages={projectPagesCategories}
-        infoPages={infoPagesCategories}
-        currentPage={pathName}
-        onClose={handleClose}
-      />
-    )
+    <AnimatePresence>
+      {isNavigationOpen && (
+        <NavigationWidgetUi
+          projectPages={projectPagesCategories}
+          infoPages={infoPagesCategories}
+          currentPage={pathName}
+          onClose={handleClose}
+        />
+      )}
+    </AnimatePresence>
   );
 }

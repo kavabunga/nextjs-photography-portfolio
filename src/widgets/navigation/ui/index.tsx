@@ -49,12 +49,14 @@ export function NavigationWidgetUi({
                 {/* TODO: impliment page__link styling */}
                 <Link
                   className={clsx(
+                    'link',
                     classes.navigation__link,
-                    element.wip && classes.navigation__link_inactive
+                    element.wip && classes._inactive
                   )}
                   href={`/${element.name.toLowerCase()}`}
                   aria-disabled={element.wip}
                   tabIndex={element.wip ? -1 : undefined}
+                  onClick={element.wip ? undefined : onClose}
                 >
                   {element.name}
                 </Link>
@@ -79,8 +81,13 @@ export function NavigationWidgetUi({
                 className={classes.navigation__item}
               >
                 <Link
-                  className={`${classes.navigation__link} ${classes.navigation__link_size_small}`}
+                  className={clsx(
+                    'link',
+                    classes.navigation__link,
+                    classes._size_small
+                  )}
                   href={`/${element.name.toLowerCase()}`}
+                  onClick={onClose}
                 >
                   {element.name}
                 </Link>
@@ -91,15 +98,15 @@ export function NavigationWidgetUi({
         {currentPage !== '/' && (
           <motion.button
             type="button"
-            className={classes.navigation__closeButton}
             initial="hidden"
             animate="visible"
             exit="hidden"
             variants={closeButtonAnimationConfig}
             whileHover="hover"
+            className={clsx(classes.navigation__closeButton)}
             onClick={onClose}
           >
-            <IconX />
+            <IconX size="100%" />
           </motion.button>
         )}
       </motion.div>

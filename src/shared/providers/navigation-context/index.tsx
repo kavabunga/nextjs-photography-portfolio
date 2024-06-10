@@ -57,7 +57,9 @@ export function NavigationContextProvider({
 export const useNavigation = (): INavigationContext => {
   const context = useContext(NavigationContext);
   if (!context) {
-    throw new Error('useNavOverlay must be used within a NavOverlayProvider');
+    throw new Error(
+      'useNavigation must be used within a NavigationContextProvider'
+    );
   }
   return context;
 };

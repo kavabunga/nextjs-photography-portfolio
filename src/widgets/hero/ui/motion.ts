@@ -1,6 +1,6 @@
 import type { MotionProps } from 'framer-motion';
 
-export const motionButtonVariants: MotionProps['variants'] = {
+export const motionTextVariants: MotionProps['variants'] = {
   visible: {
     scale: 1,
     transition: {
@@ -10,6 +10,12 @@ export const motionButtonVariants: MotionProps['variants'] = {
   hidden: {
     scale: 0.98,
   },
+  hover: {
+    opacity: 0.7,
+    transition: {
+      opacity: { duration: 0.3 },
+    },
+  },
   exit: {
     opacity: 0,
     x: 100,
@@ -18,7 +24,8 @@ export const motionButtonVariants: MotionProps['variants'] = {
     },
   },
 };
-export const motionSectionVariants: MotionProps['variants'] = {
+
+export const motionButtonVariants: MotionProps['variants'] = {
   visible: {
     opacity: 1,
   },

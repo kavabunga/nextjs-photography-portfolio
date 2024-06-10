@@ -68,51 +68,56 @@
 }
 
 .navigation__link {
-  padding: 0;
-  margin: 0;
   display: inline-block;
   font-weight: 500;
   font-size: 2.75rem;
   line-height: 1.2;
   color: var(--primary-color);
-  text-decoration: none;
   border-bottom: 0.125rem solid;
 
   &::first-letter {
     text-transform: uppercase;
   }
 
+  &._size_small {
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.2;
+  }
+
+  &._inactive {
+    opacity: 0.4;
+    border-bottom: none;
+    pointer-events: none;
+
+    &:hover {
+      opacity: unset;
+    }
+  }
+
   @media (min-width: $breakpoint-xs) {
     font-size: 4.375rem;
+
+    &._size_small {
+      font-size: 1.25rem;
+    }
   }
-}
-
-.navigation__link_size_small {
-  font-weight: 400;
-  font-size: 0.875rem;
-  line-height: 1.2;
-
-  @media (min-width: $breakpoint-xs) {
-    font-size: 1.25rem;
-  }
-}
-
-.navigation__link_inactive {
-  opacity: 0.4;
-  border-bottom: none;
-  pointer-events: none;
-}
-
-.navigation__link_inactive:hover {
-  opacity: 0.4;
 }
 
 .navigation__closeButton {
   position: absolute;
   top: 4rem;
   right: 2rem;
+  padding: 0;
+  margin: 0;
   width: 3.375rem;
   height: 3.375rem;
+  display: flex;
+  color: var(--primary-color);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
 
   @media (min-width: $breakpoint-xs) {
     width: 5.25rem;

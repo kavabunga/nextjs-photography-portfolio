@@ -7,37 +7,31 @@
 // import mainImage3 from '../images/3_main.jpg';
 // import mainImage4 from '../images/4_main.jpg';
 
-// export const globalData = {
-//   hero: {
-//     title: 'Semen Katz',
-//   },
-//   header: {
-//     title: 'Semen Katz',
-//   },
-//   imagesMain: [
-//     {
-//       link: mainImage0,
-//       alt: 'Portrait of writer Kira Yarmisch',
-//     },
-//     {
-//       link: mainImage1,
-//       alt: 'Portrait of Andrey Gevak, head of Yandex Music',
-//     },
-//     {
-//       link: mainImage2,
-//       alt: 'Cockpit of A321 aircraft',
-//     },
-//     {
-//       link: mainImage3,
-//       alt: 'Engine of A321 aircraft',
-//     },
-//     {
-//       link: mainImage4,
-//       alt: 'Laboratory equipment',
-//     },
-//   ],
-
-// };
+export const globalData = {
+  title: 'Semyon Katz',
+  // imagesMain: [
+  //   {
+  //     link: mainImage0,
+  //     alt: 'Portrait of writer Kira Yarmisch',
+  //   },
+  //   {
+  //     link: mainImage1,
+  //     alt: 'Portrait of Andrey Gevak, head of Yandex Music',
+  //   },
+  //   {
+  //     link: mainImage2,
+  //     alt: 'Cockpit of A321 aircraft',
+  //   },
+  //   {
+  //     link: mainImage3,
+  //     alt: 'Engine of A321 aircraft',
+  //   },
+  //   {
+  //     link: mainImage4,
+  //     alt: 'Laboratory equipment',
+  //   },
+  // ],
+};
 
 export interface IprojectPageCategory {
   name: string;
