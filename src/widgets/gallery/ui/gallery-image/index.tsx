@@ -23,6 +23,7 @@ export function GalleryImageUi({ isGridOn, ...asset }: IGalleryImageUi) {
       height={asset.attributes.media_height || 300}
       sizes="(min-width: 1280px) 1280px, 100vw"
       quality={80}
+      id={asset.attributes.origin_path}
       className={clsx(classes.image, isGridOn && classes._view_grid)}
     />
   );

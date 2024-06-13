@@ -1,11 +1,13 @@
 import {
   NavigationContextProvider,
+  OverlayContextProvider,
   ViewModeContextProvider,
 } from '@/shared/providers';
 import { fira } from '@/shared/style';
 import '@/shared/style/globals.css';
 
 import { NavigationWidget } from '@/widgets/navigation';
+import { OverlayWidget } from '@/widgets/overlay';
 
 // TODO: Figure out viewport settings
 import type { Metadata } from 'next';
@@ -24,10 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={fira.className}>
       <body className="body">
-        <NavigationContextProvider>
-          <ViewModeContextProvider>{children}</ViewModeContextProvider>
-          <NavigationWidget />
-        </NavigationContextProvider>
+        <OverlayContextProvider>
+          <NavigationContextProvider>
+            <ViewModeContextProvider>{children}</ViewModeContextProvider>
+            <OverlayWidget id="navigation">
+              <NavigationWidget />
+            </OverlayWidget>
+          </NavigationContextProvider>
+        </OverlayContextProvider>
       </body>
     </html>
   );

@@ -1,3 +1,6 @@
-export default function Downloads() {
-  return <h2>Привет, это Downloads</h2>;
+import { downloadsPageData } from '@/shared/data';
+import { DownloadsWidget } from '@/widgets/downloads';
+
+export default async function Contacts() {
+  return <DownloadsWidget {...downloadsPageData} />;
 }

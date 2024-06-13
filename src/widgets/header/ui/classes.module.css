@@ -7,7 +7,7 @@
   align-items: flex-start;
   gap: 0.5rem;
   margin: 0;
-  padding: 1.5rem 1rem 1rem;
+  padding: 1.5rem 0 1rem;
   color: var(--background-color);
   mix-blend-mode: exclusion;
 
@@ -23,13 +23,14 @@
   flex-direction: column;
   gap: 0.5rem;
 
-  @media (min-width: $breakpoint-sm) {
+  @media (min-width: $breakpoint-xs) {
     flex-direction: row;
     align-items: center;
   }
 }
 
 .header__buttonsBlock {
+  font-family: inherit;
   padding: 0;
   margin: 0;
   display: flex;

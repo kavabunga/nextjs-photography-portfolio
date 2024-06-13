@@ -2,7 +2,7 @@
 
 import { type ComponentProps, useCallback, type ComponentType } from 'react';
 
-import { useNavigation } from '@/shared/providers';
+import { useOverlay } from '@/shared/providers';
 
 export interface IOpenMenuFeatureTriggerUi extends ComponentProps<'button'> {}
 
@@ -11,8 +11,11 @@ interface IOpenMenuFeature {
 }
 
 export function OpenMenuFeature({ triggerComponentUi: Ui }: IOpenMenuFeature) {
-  const { openNavigation } = useNavigation();
-  const handleClick = useCallback(() => openNavigation(), [openNavigation]);
+  const { openOverlay } = useOverlay();
+  const handleClick = useCallback(
+    () => openOverlay('navigation'),
+    [openOverlay]
+  );
 
   return <Ui onClick={handleClick} />;
 }

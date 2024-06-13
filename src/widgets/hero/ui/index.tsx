@@ -1,34 +1,29 @@
 import clsx from 'clsx';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
+
+import { motion } from 'framer-motion';
 
 import { inter, fira } from '@/shared/style';
 
+import { OpenMenuFeature } from '@/features/open-menu';
+
 import { motionButtonVariants, motionTextVariants } from './motion';
+import { HeroButtonUi } from './hero-button';
 import classes from './classes.module.css';
 
-interface IHeroWidgetUi {
-  onClick: () => void;
-}
-
-export function HeroWidgetUi({ onClick }: IHeroWidgetUi) {
+export function HeroWidgetUi() {
   return (
-    <AnimatePresence>
-      <motion.button
-        variants={motionButtonVariants}
-        type="button"
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        className={clsx(inter.className, classes.hero)}
-        onClick={(e) => {
-          e.preventDefault();
-          return onClick();
-        }}
-      >
+    <motion.div
+      variants={motionButtonVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className={clsx(inter.className, classes.hero)}
+    >
+      <motion.div className={classes.hero__container}>
         <motion.h1
           variants={motionTextVariants}
-          whileHover="hover"
           className={classes.hero__title}
         >
           Semyon Katz
@@ -37,9 +32,20 @@ export function HeroWidgetUi({ onClick }: IHeroWidgetUi) {
           variants={motionTextVariants}
           className={clsx(fira.className, classes.hero__subtitle)}
         >
-          Photographer & web developer
+          <OpenMenuFeature
+            triggerComponentUi={(props) =>
+              HeroButtonUi({ label: 'Photographer', ...props })
+            }
+          />
+          {' & '}
+          <Link
+            href="https://github.com/kavabunga"
+            className={clsx('link', classes.hero__link)}
+          >
+            web&nbsp;developer
+          </Link>
         </motion.p>
-      </motion.button>
-    </AnimatePresence>
+      </motion.div>
+    </motion.div>
   );
 }

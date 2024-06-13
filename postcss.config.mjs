@@ -25,8 +25,8 @@ const config = {
           'breakpoint-sm': '37.5em',
           // 720px
           'breakpoint-md': '45em',
-          // 1080px
-          'breakpoint-lg': '67.5em',
+          // 1024px
+          'breakpoint-lg': '64em',
           // 1280px
           'breakpoint-xl': '80em',
         },

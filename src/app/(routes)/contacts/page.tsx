@@ -1,3 +1,7 @@
-export default function Contacts() {
-  return <h2>Привет, это Contacts</h2>;
+import { contactsPageData } from '@/shared/data';
+
+import { ContactsWidget } from '@/widgets/contacts';
+
+export default async function Contacts() {
+  return <ContactsWidget {...contactsPageData} />;
 }

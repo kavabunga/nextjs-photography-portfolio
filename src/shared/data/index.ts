@@ -1,36 +1,6 @@
-// import infoImage0 from '../images/0_semen_katz.jpg';
-// import infoImage1 from '../images/1_semen_katz_bts.jpg';
-// import infoImage2 from '../images/2_semen_katz_bts.jpg';
-// import mainImage0 from '../images/0_main.jpg';
-// import mainImage1 from '../images/1_main.jpg';
-// import mainImage2 from '../images/2_main.jpg';
-// import mainImage3 from '../images/3_main.jpg';
-// import mainImage4 from '../images/4_main.jpg';
-
 export const globalData = {
   title: 'Semyon Katz',
-  // imagesMain: [
-  //   {
-  //     link: mainImage0,
-  //     alt: 'Portrait of writer Kira Yarmisch',
-  //   },
-  //   {
-  //     link: mainImage1,
-  //     alt: 'Portrait of Andrey Gevak, head of Yandex Music',
-  //   },
-  //   {
-  //     link: mainImage2,
-  //     alt: 'Cockpit of A321 aircraft',
-  //   },
-  //   {
-  //     link: mainImage3,
-  //     alt: 'Engine of A321 aircraft',
-  //   },
-  //   {
-  //     link: mainImage4,
-  //     alt: 'Laboratory equipment',
-  //   },
-  // ],
+  subtitle: 'Photographer &\u00A0web\u00A0developer',
 };
 
 export interface IprojectPageCategory {
@@ -77,110 +47,106 @@ export const projectPagesCategories: IprojectPageCategory[] = [
     text: '',
     wip: true,
   },
-  {
-    name: 'web',
-    type: 'category',
-    text: '',
-    wip: true,
-  },
 ];
 
-export interface IinfoPageCategory {
-  name: string;
-  text: string;
-  [key: string]: any;
+interface Ilink {
+  type: string | null;
+  link: {
+    url: string;
+    text: string;
+  };
+  text: string | null;
 }
 
-export const infoPagesCategories: IinfoPageCategory[] = [
-  {
-    name: 'about',
-    text: '',
-    info: {
-      title: '',
-      text: [
-        'Semen Katz is a portrait and documentary photographer, known for capturing stunning images of billionaire entrepreneurs and CEOs listed on FORBES, as well as for his work covering the manufacturing and R&D industries, technology and science-related subjects, and startups. He is also deeply passionate about capturing the beauty and power of athletes in action.',
-        'After earning Master degree in radio engineering, Semen went on to graduate from Rodchenko School of Photography and Multimedia in Moscow. He also took part in documentary photography workshops by International Summer School Photography in Latvia.',
-        'Semen has a wealth of experience producing top-quality images under a variety of working conditions. These cases include media, business and personal commissions made with varying sizes of production scales.',
-        'Semen lives between Haifa, Israel and Moscow, Russia, speaks native Russian and fluent English and is available for comissions worldwide.',
-      ],
-      clients: [
-        'Forbes, INC Russia, Meduza, Timeout, Men’s Health, WHEELY, Yandex, British American Tobacco, Moscow Marathon, Asics, Nike, Governments of Moscow, Tatarstan, Murmansk regions',
-      ],
-      rights: [
-        'All Rights Reserved. Usage of any of the content of this website or of any of it’s parts is allowed only with a written permission of the Author © 2023',
-      ],
+interface IinfoPage {
+  name: string;
+  title: string | null;
+  text: string[] | null;
+}
+export interface IaboutPageData extends IinfoPage {
+  clients: string[] | null;
+  rights: string[] | null;
+}
+
+export const aboutPageData: IaboutPageData = {
+  name: 'about',
+  title: null,
+  text: [
+    'Semyon Katz is\u00A0a\u00A0skilled professional photographer and a\u00A0web developer. Renowned for capturing images of\u00A0influential figures featured in\u00A0FORBES and delving into diverse projects, including technology, sports and education. Semyon is\u00A0a\u00A0versatile creative.',
+    'With a\u00A0Master\u2019s in\u00A0radio engineering and training from the Rodchenko School of\u00A0Photography and Yandex. Practicum, Semyon seamlessly integrates his skills of\u00A0photography and coding.',
+    'Currently based in\u00A0Haifa, Israel, Semyon is\u00A0open to\u00A0global commissions. Beyond his technical skills, he\u00A0remains committed to\u00A0exploring new projects, focusing on\u00A0portrait and sport photography and web development and is\u00A0open to\u00A0volunteering opportunities.',
+  ],
+  clients: [
+    'Forbes, INC Russia, Timeout, Men\u2019s Health, WHEELY, Yandex, British American Tobacco, Governments of\u00A0Russian regions, Moscow Marathon, Asics, Nike, GRI 🖤',
+  ],
+  rights: [
+    'All Rights Reserved. Usage of\u00A0any of\u00A0the content of\u00A0this website or\u00A0of\u00A0any of\u00A0it\u2019s parts is\u00A0allowed only with a\u00A0written permission of\u00A0the Author \u00A9\u00A02024',
+  ],
+};
+export interface IlinksPageData extends IinfoPage {
+  links: Ilink[] | null;
+}
+
+export const downloadsPageData: IlinksPageData = {
+  name: 'downloads',
+  title: null,
+  text: null,
+  links: [
+    {
+      type: 'pdf',
+      link: {
+        url: 'https://semyonkatz.imgix.net/pdfs/Semyon Katz business portraiture portfolio.pdf',
+        text: 'Business photography portfolio',
+      },
+      text: '(15 Mb)',
     },
-    // images: [
-    //   {
-    //     link: infoImage0,
-    //     alt: 'Semen Katz portrait by Tikhon Bazilevskiy',
-    //   },
-    //   {
-    //     link: infoImage1,
-    //     alt: 'Backstage shot of Semen Katz`s photoshoot',
-    //   },
-    //   {
-    //     link: infoImage2,
-    //     alt: 'Backstage shot of Semen Katz`s photoshoot',
-    //   },
-    // ],
-  },
-  {
-    name: 'downloads',
-    text: '',
-    downloads: [
-      {
-        link: {
-          url: 'https://disk.yandex.ru/i/O44q9H-d_Q7OIA',
-          text: 'Business portfolio.pdf',
-        },
-        text: '',
+  ],
+};
+
+export const contactsPageData: IlinksPageData = {
+  name: 'contacts',
+  title: null,
+  text: null,
+  links: [
+    {
+      type: '',
+      link: {
+        url: 'tel:+79165226935',
+        text: '+7 916 522–69–35',
       },
-      {
-        link: {
-          url: 'https://disk.yandex.ru/i/jLSrs-9uDTdWPw',
-          text: 'Industrial portfolio.pdf',
-        },
-        text: '',
+      text: ', Moscow, RU',
+    },
+    {
+      type: '',
+      link: {
+        url: 'tel:+972552933046',
+        text: '+972 55 293–30–46',
       },
-    ],
-  },
-  {
-    name: 'contacts',
-    text: '',
-    contacts: [
-      {
-        type: '',
-        link: {
-          url: 'tel:+79165226935',
-          text: '+7 916 522–69–35',
-        },
-        text: ', Moscow, RU',
+      text: ', Haifa, IL',
+    },
+    {
+      type: '',
+      link: {
+        url: 'mailto:kavabunga@gmail.com',
+        text: 'kavabunga@gmail.com',
       },
-      {
-        type: '',
-        link: {
-          url: 'tel:+972552933046',
-          text: '+972 55 293–30–46',
-        },
-        text: ', Haifa, IL',
+      text: '',
+    },
+    {
+      type: '',
+      link: {
+        url: 'https://t.me/kavabunga',
+        text: 'kavabunga',
       },
-      {
-        type: '',
-        link: {
-          url: 'mailto:kavabunga@gmail.com',
-          text: 'kavabunga@gmail.com',
-        },
-        text: '',
-      },
-      {
-        type: '',
-        link: {
-          url: 'https://t.me/kavabunga',
-          text: 'kavabunga',
-        },
-        text: ' at social networks',
-      },
-    ],
-  },
+      text: ' at social networks',
+    },
+  ],
+};
+
+export type IinfoPageCategory = IaboutPageData | IlinksPageData;
+
+export const infoPagesCategories = [
+  aboutPageData,
+  downloadsPageData,
+  contactsPageData,
 ];

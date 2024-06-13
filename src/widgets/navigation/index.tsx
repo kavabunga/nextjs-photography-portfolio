@@ -1,34 +1,39 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 
-import { usePathname } from 'next/navigation';
+import { useInView } from 'framer-motion';
 
-import { AnimatePresence } from 'framer-motion';
-
-import { useNavigation } from '@/shared/providers';
+import { useOverlay } from '@/shared/providers';
 import { projectPagesCategories, infoPagesCategories } from '@/shared/data';
 
 import { NavigationWidgetUi } from './ui';
 
 export function NavigationWidget() {
-  const pathName = usePathname();
-  const { closeNavigation, isNavigationOpen } = useNavigation();
+  const { closeOverlay } = useOverlay();
+
+  const infoLinksRef = useRef(null);
+  const isInView = useInView(infoLinksRef, { amount: 'all' });
 
   const handleClose = useCallback(() => {
-    closeNavigation();
-  }, [closeNavigation]);
+    closeOverlay('navigation');
+  }, [closeOverlay]);
+
+  const handleLinkToBottom = useCallback((targetId: string) => {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollTo(0, targetElement.scrollHeight);
+    }
+  }, []);
 
   return (
-    <AnimatePresence>
-      {isNavigationOpen && (
-        <NavigationWidgetUi
-          projectPages={projectPagesCategories}
-          infoPages={infoPagesCategories}
-          currentPage={pathName}
-          onClose={handleClose}
-        />
-      )}
-    </AnimatePresence>
+    <NavigationWidgetUi
+      projectPages={projectPagesCategories}
+      infoPages={infoPagesCategories}
+      {...{ infoLinksRef }}
+      {...{ isInView }}
+      onDownButton={handleLinkToBottom}
+      onClose={handleClose}
+    />
   );
 }

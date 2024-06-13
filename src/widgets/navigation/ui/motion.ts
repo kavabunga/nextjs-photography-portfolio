@@ -88,3 +88,30 @@ export const closeButtonAnimationConfig: MotionProps['variants'] = {
     },
   },
 };
+
+export const downButtonAnimationConfig: MotionProps['variants'] = {
+  visible: {
+    opacity: 1,
+    y: 8,
+    transition: {
+      y: {
+        type: 'spring',
+        stiffness: 100,
+        delay: 1.2,
+        repeat: Infinity,
+        repeatType: 'reverse',
+        duration: 1,
+      },
+      opacity: {
+        delay: 0.4,
+        duration: 0.2,
+      },
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};

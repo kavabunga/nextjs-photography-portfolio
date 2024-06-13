@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import clsx from 'clsx';
 
 import { ToggleGridViewFeature } from '@/features/toggle-grid-view';
@@ -17,7 +19,9 @@ export async function HeaderUi() {
   return (
     <header className={clsx(inter.className, classes.header)}>
       <div className={classes.header__titleBlock}>
-        <h1 className={classes.header__title}>{globalData.title}</h1>
+        <Link href="/" className={clsx('link', classes.header__title)}>
+          {globalData.title}
+        </Link>
         <CurrentPage />
       </div>
 
