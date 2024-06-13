@@ -7,8 +7,10 @@ import Image from 'next/image';
 import { inter } from '@/shared/style';
 import type { IImageData } from '@/shared/types';
 
-import classes from './classes.module.css';
 import { CaptionUi } from '../caption';
+
+import { overlayAnimationVariants } from './motion';
+import classes from './classes.module.css';
 
 interface IGalleryPreviewUi extends IImageData {
   onClose: () => void;
@@ -16,7 +18,14 @@ interface IGalleryPreviewUi extends IImageData {
 
 export function GalleryPreviewUi({ onClose, ...asset }: IGalleryPreviewUi) {
   return (
-    <motion.div id="preview" className={classes.preview}>
+    <motion.div
+      variants={overlayAnimationVariants}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      id="preview"
+      className={classes.preview}
+    >
       <Image
         src={asset.attributes.origin_path}
         alt={
@@ -33,9 +42,6 @@ export function GalleryPreviewUi({ onClose, ...asset }: IGalleryPreviewUi) {
       <div className={classes.preview__infoContainer}>
         {asset.attributes.custom_fields?.caption && (
           <CaptionUi text={asset.attributes.custom_fields.caption} />
-          // <p className={classes.preview__caption}>
-          //   {asset.attributes.custom_fields.caption}
-          // </p>
         )}
 
         <button

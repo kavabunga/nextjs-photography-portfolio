@@ -4,11 +4,12 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { usePathname } from 'next/navigation';
 
-import { useViewMode } from '@/shared/providers';
+import { useOverlay, useViewMode } from '@/shared/providers';
 import type { IImageData } from '@/shared/types';
 
 import { GalleryWidgetUi } from './ui';
 import { GalleryPreviewUi } from './ui/gallery-preview';
+import { OverlayWidget } from '../overlay';
 
 interface IGalleryWidget {
   data: IImageData[] | null;
@@ -16,31 +17,27 @@ interface IGalleryWidget {
 
 export function GalleryWidget({ data }: IGalleryWidget) {
   const { pagesGridModes } = useViewMode();
+  const { openOverlay, closeOverlay } = useOverlay();
   const path = usePathname();
   const currentPageName = path.split('/').slice(-1)[0];
   const isGridOn = pagesGridModes?.[currentPageName] || false;
+
   const [preview, setPreview] = useState<IImageData | null>(null);
 
-  const handleImageClick = useCallback((image: IImageData) => {
-    setPreview(image);
-  }, []);
+  const handleImageClick = useCallback(
+    (image: IImageData) => {
+      setPreview(image);
+      openOverlay('preview');
+    },
+    [openOverlay]
+  );
 
-  const handleClosePreview = useCallback(() => setPreview(null), []);
+  const handleClosePreview = useCallback(() => {
+    closeOverlay('preview');
+    setPreview(null);
+  }, [closeOverlay]);
 
-  // NOTE: ESC key listener
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleClosePreview();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleClosePreview]);
+  useEffect(() => () => handleClosePreview(), [handleClosePreview]);
 
   // TODO: Add something for empty data
   return (
@@ -51,9 +48,11 @@ export function GalleryWidget({ data }: IGalleryWidget) {
           {...{ isGridOn }}
           {...{ handleImageClick }}
         />
-        {preview && (
-          <GalleryPreviewUi {...preview} onClose={handleClosePreview} />
-        )}
+        <OverlayWidget id="preview">
+          {preview && (
+            <GalleryPreviewUi {...preview} onClose={handleClosePreview} />
+          )}
+        </OverlayWidget>
       </>
     )
   );
