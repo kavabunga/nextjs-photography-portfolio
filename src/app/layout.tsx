@@ -1,5 +1,4 @@
 import {
-  NavigationContextProvider,
   OverlayContextProvider,
   ViewModeContextProvider,
 } from '@/shared/providers';
@@ -27,14 +26,12 @@ export default function RootLayout({
     <html lang="en" className={fira.className}>
       <body className="body">
         <OverlayContextProvider>
-          <NavigationContextProvider>
-            <ViewModeContextProvider>
-              {children}
-              <OverlayWidget id="navigation">
-                <NavigationWidget />
-              </OverlayWidget>
-            </ViewModeContextProvider>
-          </NavigationContextProvider>
+          <ViewModeContextProvider>
+            {children}
+            <OverlayWidget id="navigation">
+              <NavigationWidget />
+            </OverlayWidget>
+          </ViewModeContextProvider>
         </OverlayContextProvider>
       </body>
     </html>
