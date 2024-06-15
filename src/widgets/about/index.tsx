@@ -7,6 +7,6 @@ interface IAboutWidget extends IaboutPageData {
   images: IImageData[] | null;
 }
 
-export async function AboutWidget({ ...data }: IAboutWidget) {
+export function AboutWidget({ ...data }: IAboutWidget) {
   return <AboutWidgetUi {...data} />;
 }

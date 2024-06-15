@@ -2,7 +2,7 @@ import { Header } from '@/widgets/header';
 
 import classes from './classes.module.css';
 
-export default async function PhotographyLayout({
+export default function RoutesLayout({
   children,
 }: {
   children: React.ReactNode;

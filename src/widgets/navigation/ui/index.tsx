@@ -39,6 +39,7 @@ export function NavigationWidgetUi({
   return (
     <motion.nav
       id="navigation"
+      data-testid="navigation"
       variants={animationConfig}
       initial="hidden"
       animate="visible"

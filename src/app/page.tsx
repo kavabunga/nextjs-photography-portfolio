@@ -1,5 +1,5 @@
 import { HeroWidget } from '@/widgets/hero';
 
-export default async function Home() {
+export default function Home() {
   return <HeroWidget />;
 }

@@ -23,7 +23,10 @@ export function AboutWidgetUi({
     <section className={classes.info}>
       <div className={classes.info__articlesContainer}>
         {text && (
-          <article className={classes.info__article}>
+          <article
+            className={classes.info__article}
+            data-testid="about-article"
+          >
             {title && (
               <h2 className={clsx(inter.className, classes.info__title)}>
                 {title}
@@ -37,7 +40,10 @@ export function AboutWidgetUi({
           </article>
         )}
         {clients && (
-          <article className={classes.info__article}>
+          <article
+            className={classes.info__article}
+            data-testid="about-clients"
+          >
             <h2 className={clsx(inter.className, classes.info__title)}>
               Clients
             </h2>
@@ -55,7 +61,7 @@ export function AboutWidgetUi({
           </article>
         )}
         {rights && (
-          <article className={classes.info__article}>
+          <article className={classes.info__article} data-testid="about-rights">
             {rights.map((paragraph) => (
               <p className={classes.info__paragraph} key={paragraph}>
                 {paragraph}

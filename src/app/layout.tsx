@@ -28,10 +28,12 @@ export default function RootLayout({
       <body className="body">
         <OverlayContextProvider>
           <NavigationContextProvider>
-            <ViewModeContextProvider>{children}</ViewModeContextProvider>
-            <OverlayWidget id="navigation">
-              <NavigationWidget />
-            </OverlayWidget>
+            <ViewModeContextProvider>
+              {children}
+              <OverlayWidget id="navigation">
+                <NavigationWidget />
+              </OverlayWidget>
+            </ViewModeContextProvider>
           </NavigationContextProvider>
         </OverlayContextProvider>
       </body>
