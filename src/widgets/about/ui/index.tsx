@@ -20,20 +20,20 @@ export function AboutWidgetUi({
   images,
 }: IAboutWidgetUi) {
   return (
-    <section className={classes.info}>
-      <div className={classes.info__articlesContainer}>
+    <section className={classes.about}>
+      <div className={classes.about__articlesContainer}>
         {text && (
           <article
-            className={classes.info__article}
+            className={classes.about__article}
             data-testid="about-article"
           >
             {title && (
-              <h2 className={clsx(inter.className, classes.info__title)}>
+              <h2 className={clsx(inter.className, classes.about__title)}>
                 {title}
               </h2>
             )}
             {text.map((paragraph) => (
-              <p className={classes.info__paragraph} key={paragraph}>
+              <p className={classes.about__paragraph} key={paragraph}>
                 {paragraph}
               </p>
             ))}
@@ -41,16 +41,16 @@ export function AboutWidgetUi({
         )}
         {clients && (
           <article
-            className={classes.info__article}
+            className={classes.about__article}
             data-testid="about-clients"
           >
-            <h2 className={clsx(inter.className, classes.info__title)}>
+            <h2 className={clsx(inter.className, classes.about__title)}>
               Clients
             </h2>
             {clients.map((paragraph) => (
               <p
                 className={clsx(
-                  classes.info__paragraph,
+                  classes.about__paragraph,
                   classes._style_highlight
                 )}
                 key={paragraph}
@@ -61,9 +61,12 @@ export function AboutWidgetUi({
           </article>
         )}
         {rights && (
-          <article className={classes.info__article} data-testid="about-rights">
+          <article
+            className={classes.about__article}
+            data-testid="about-rights"
+          >
             {rights.map((paragraph) => (
-              <p className={classes.info__paragraph} key={paragraph}>
+              <p className={classes.about__paragraph} key={paragraph}>
                 {paragraph}
               </p>
             ))}
@@ -77,12 +80,12 @@ export function AboutWidgetUi({
           // animate="visible"
           // exit="hidden"
           // variants={containerAnimationConfig}
-          className={classes.info__imagesContainer}
+          className={classes.about__imagesContainer}
         >
           {images.map((asset) => (
             <div
               // variants={imageAnimationConfig}
-              className={classes.info__imageContainer}
+              className={classes.about__imageContainer}
               key={asset.id}
             >
               <Image
@@ -95,7 +98,7 @@ export function AboutWidgetUi({
                 height={asset.attributes.media_height || 300}
                 sizes="100vw, (min-width: $breakpoint-xs) 40vw"
                 quality={70}
-                className={classes.info__image}
+                className={classes.about__image}
               />
             </div>
           ))}

@@ -1,4 +1,4 @@
-.info {
+.about {
   padding: 0;
   margin: 0;
   display: grid;
@@ -16,7 +16,7 @@
   }
 }
 
-.info__title {
+.about__title {
   padding: 0;
   margin: 0;
   font-style: normal;
@@ -25,7 +25,7 @@
   line-height: 1.5;
 }
 
-.info__articlesContainer {
+.about__articlesContainer {
   padding: 0;
   padding-bottom: 1rem;
   margin: 0;
@@ -34,7 +34,7 @@
   gap: 2rem;
 }
 
-.info__article {
+.about__article {
   padding: 0;
   margin: 0;
   display: flex;
@@ -50,7 +50,7 @@
   }
 }
 
-.info__paragraph {
+.about__paragraph {
   padding: 0;
   margin: 0;
 
@@ -59,14 +59,14 @@
   }
 }
 
-.info__imagesContainer {
+.about__imagesContainer {
   padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.info__imageContainer {
+.about__imageContainer {
   width: 100%;
   height: auto;
 
@@ -92,7 +92,7 @@
   }
 }
 
-.info__image {
+.about__image {
   padding: 0;
   margin: 0;
   margin-bottom: 1rem;
