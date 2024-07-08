@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 
 import type { IImageData } from '@/shared/types';
 
+import { CaptionWidget } from '@/widgets/caption';
+
 import { resolveImageOrientation } from '../lib';
 
 import { GalleryImageUi } from './gallery-image';
-import { imageAnimationVariants } from './motion';
 import classes from './classes.module.css';
-import { CaptionUi } from './caption';
 
 interface IGalleryWidgetUi {
   data: IImageData[];
@@ -53,7 +53,7 @@ export function GalleryWidgetUi({
             asset.attributes.custom_fields?.caption &&
             asset.attributes.custom_fields?.caption !==
               data[index - 1]?.attributes.custom_fields?.caption && (
-              <CaptionUi text={asset.attributes.custom_fields.caption} />
+              <CaptionWidget text={asset.attributes.custom_fields.caption} />
             )}
         </li>
       ))}
