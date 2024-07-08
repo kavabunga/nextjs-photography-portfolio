@@ -1,6 +1,98 @@
+import { Metadata } from 'next';
+
 export const globalData = {
   title: 'Semyon Katz',
-  subtitle: 'Photographer &\u00A0web\u00A0developer',
+  author: 'Semyon Katz',
+  authorUrl: 'https://github.com/kavabunga',
+  siteName: 'Semyon Katz portfolio',
+  subtitle: 'Photographer & web developer',
+  description:
+    'Semyon Katz, multifaceted talent in photography and web development. Shooting billionaire entrepreneurs, CEOs, manufacturing and R&D industries, technology and science-related subjects, startups and more.',
+  descriptionShort:
+    'Semyon Katz, multifaceted talent in photography and web development',
+};
+
+export const globalMetadata: Metadata = {
+  title: globalData.title,
+  description: globalData.description,
+  generator: 'Next.js',
+  applicationName: globalData.siteName,
+  referrer: 'origin-when-cross-origin',
+  keywords: [
+    'Semyon Katz',
+    'Semyon Kats',
+    'Semen Katz',
+    'Semen Kats',
+    'Katz',
+    'Kats',
+    'photography',
+    'portrait',
+    'reportage',
+    'documentary',
+    'photo',
+    'media',
+    'frontend',
+    'web',
+    'developer',
+    'Next.js',
+    'React',
+  ],
+  authors: [{ name: globalData.author, url: globalData.authorUrl }],
+  creator: globalData.author,
+  metadataBase: new URL(
+    `https://${process.env.NEXT_PUBLIC_DOMAIN || 'semyon.io'}`
+  ),
+  openGraph: {
+    title: globalData.title,
+    description: globalData.descriptionShort,
+    url: '/',
+    siteName: globalData.siteName,
+    images: [
+      {
+        url: '/semyon-katz-s.jpeg',
+        width: 400,
+        height: 400,
+        alt: 'Semyon Katz',
+      },
+      {
+        url: '/semyon-katz-m.jpeg',
+        width: 800,
+        height: 800,
+        alt: 'Semyon Katz',
+      },
+      {
+        url: '/semyon-katz-l.jpeg',
+        width: 1500,
+        height: 1500,
+        alt: 'Semyon Katz',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    creator: '@kavabunga',
+  },
+  robots: {
+    // index: false,
+    // follow: true,
+    // nocache: true,
+    googleBot: {
+      index: true,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  // verification: {
+  //   google: 'google',
+  //   yandex: 'yandex',
+  //   yahoo: 'yahoo',
+  //   other: {
+  //     me: ['my-email', 'my-link'],
+  //   },
+  // },
 };
 
 export interface IprojectPageCategory {
@@ -8,6 +100,7 @@ export interface IprojectPageCategory {
   type: 'category';
   text: string;
   wip: boolean;
+  metadata: Metadata;
 }
 
 export const projectPagesCategories: IprojectPageCategory[] = [
@@ -16,36 +109,50 @@ export const projectPagesCategories: IprojectPageCategory[] = [
     type: 'category',
     text: '',
     wip: true,
+    metadata: {
+      title: `${globalData.title} | People`,
+      description:
+        'Portraits. Commercial and editorial photography by Semyon Katz',
+    },
   },
   {
     name: 'official',
     type: 'category',
     text: '',
     wip: false,
+    metadata: {
+      title: `${globalData.title} | Official`,
+      description:
+        'Official portraits. Commercial and editorial photography by Semyon Katz',
+    },
   },
   {
     name: 'enterprises',
     type: 'category',
     text: '',
     wip: true,
+    metadata: {},
   },
   {
     name: 'lifestyle',
     type: 'category',
     text: '',
     wip: true,
+    metadata: {},
   },
   {
     name: 'sports',
     type: 'category',
     text: '',
     wip: true,
+    metadata: {},
   },
   {
     name: 'media',
     type: 'category',
     text: '',
     wip: true,
+    metadata: {},
   },
 ];
 
