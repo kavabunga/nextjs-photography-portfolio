@@ -1,6 +1,37 @@
 'use server';
 
-interface Iapi {
+import { NextRequest } from 'next/server';
+
+interface IimgixApi extends Partial<NextRequest> {}
+
+async function imgixApi({ url, ...options }: IimgixApi) {
+  const apiUrl = process.env.IMAGES_API;
+  const apiKey = process.env.IMGIX_API_KEY;
+  const source = process.env.CLOUDFLARE_SOURCE_ID;
+
+  const requestUrl = `${apiUrl}/sources/${source}${url}`;
+
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/vnd.api+json');
+  headers.append('Authorization', `Bearer ${apiKey}`);
+
+  const config = {
+    ...options,
+    headers,
+  };
+
+  try {
+    const response = await fetch(requestUrl, config);
+    const { data } = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log('Error on fetching data: ', error);
+  }
+
+  return null;
+}
+interface IgetAssetsApi {
   key?:
     | 'categories'
     | 'colors'
@@ -18,30 +49,26 @@ interface Iapi {
   value?: string | number | boolean;
 }
 
-export async function api({ key, value }: Iapi) {
-  const apiUrl = process.env.IMAGES_API;
-  const apiKey = process.env.IMGIX_API_KEY;
-  const source = process.env.CLOUDFLARE_SOURCE_ID;
-
-  const url = `${apiUrl}/sources/${source}/assets${key ? `?filter[${key}]=${value}&sort=date_modified` : ''}`;
-
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/vnd.api+json');
-  headers.append('Authorization', `Bearer ${apiKey}`);
+export async function getAssetsApi({ key, value }: IgetAssetsApi) {
+  const url = `/assets${key ? `?filter[${key}]=${value}&sort=date_modified` : ''}`;
 
   const options = {
     method: 'GET',
-    headers,
   };
 
-  try {
-    const response = await fetch(url, options);
-    const { data } = await response.json();
+  const response = await imgixApi({ url, ...options });
 
-    return data;
-  } catch (error) {
-    console.log('Error on images fetching: ', error);
-  }
+  return response;
+}
 
-  return null;
+export async function getAssetApi(id: string) {
+  const url = `/assets${id}`;
+
+  const options = {
+    method: 'GET',
+  };
+
+  const response = await imgixApi({ url, ...options });
+
+  return response;
 }
