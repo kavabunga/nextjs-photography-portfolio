@@ -61,7 +61,7 @@ export function NavigationWidgetUi({
                     classes.navigation__link,
                     element.wip && classes._inactive
                   )}
-                  href={`/${element.name.toLowerCase()}`}
+                  href={`/photography/${element.name.toLowerCase()}`}
                   aria-disabled={element.wip}
                   tabIndex={element.wip ? -1 : undefined}
                   onClick={element.wip ? undefined : onClose}

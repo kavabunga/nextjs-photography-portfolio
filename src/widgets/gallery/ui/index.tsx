@@ -1,6 +1,8 @@
+'use client';
+
 import clsx from 'clsx';
 
-import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 import type { IImageData } from '@/shared/types';
 
@@ -14,14 +16,10 @@ import classes from './classes.module.css';
 interface IGalleryWidgetUi {
   data: IImageData[];
   isGridOn: boolean;
-  handleImageClick: (asset: IImageData) => void;
+  path: string;
 }
 
-export function GalleryWidgetUi({
-  data,
-  isGridOn,
-  handleImageClick,
-}: IGalleryWidgetUi) {
+export function GalleryWidgetUi({ data, isGridOn, path }: IGalleryWidgetUi) {
   return (
     <ul className={clsx(classes.gallery, isGridOn && classes._view_grid)}>
       {data.map((asset: IImageData, index) => (
@@ -35,19 +33,20 @@ export function GalleryWidgetUi({
             isGridOn && classes._view_grid
           )}
         >
-          <motion.button
-            variants={imageAnimationVariants}
-            initial="initial"
-            animate="animate"
-            onClick={() => handleImageClick(asset)}
+          <Link
+            href={`/photography/${path}/${encodeURIComponent(
+              (
+                asset.attributes.origin_path.split('/').pop() ||
+                asset.attributes.origin_path
+              ).replace(/\.[^/.]+$/, '')
+            )}`}
             className={clsx(
-              'button',
               classes.gallery__imageContainer,
               !isGridOn && classes._inactive
             )}
           >
             <GalleryImageUi {...asset} {...{ isGridOn }} />
-          </motion.button>
+          </Link>
           {/* NOTE: Show caption if grid is off, asset has caption and it doesn't match the previous one */}
           {!isGridOn &&
             asset.attributes.custom_fields?.caption &&
