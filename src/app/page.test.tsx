@@ -2,7 +2,6 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import {
-  NavigationContextProvider,
   OverlayContextProvider,
   ViewModeContextProvider,
 } from '@/shared/providers';
@@ -27,14 +26,12 @@ describe('Home page layout', () => {
   it('renders all ui components', () => {
     render(
       <OverlayContextProvider>
-        <NavigationContextProvider>
-          <ViewModeContextProvider>
-            <Home />
-            <OverlayWidget id="navigation">
-              <NavigationWidget />
-            </OverlayWidget>
-          </ViewModeContextProvider>
-        </NavigationContextProvider>
+        <ViewModeContextProvider>
+          <Home />
+          <OverlayWidget id="navigation">
+            <NavigationWidget />
+          </OverlayWidget>
+        </ViewModeContextProvider>
       </OverlayContextProvider>
     );
 
@@ -50,14 +47,12 @@ describe('Home page layout', () => {
   it('button opens menu', () => {
     render(
       <OverlayContextProvider>
-        <NavigationContextProvider>
-          <ViewModeContextProvider>
-            <Home />
-            <OverlayWidget id="navigation">
-              <NavigationWidget />
-            </OverlayWidget>
-          </ViewModeContextProvider>
-        </NavigationContextProvider>
+        <ViewModeContextProvider>
+          <Home />
+          <OverlayWidget id="navigation">
+            <NavigationWidget />
+          </OverlayWidget>
+        </ViewModeContextProvider>
       </OverlayContextProvider>
     );
 
