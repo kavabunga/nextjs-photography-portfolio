@@ -1,0 +1,6 @@
+**/*.tsx
+**/*.ts
+
+.next/**/*.css
+coverage/**/*.css
+node_modules/**/*.css
