@@ -2,8 +2,9 @@
 
 html {
   box-sizing: border-box;
+  height: 100%;
+  min-height: 100dvh;
   background-color: var(--background-color);
-  height: 100dvh;
 }
 
 *,
@@ -13,15 +14,22 @@ html {
 }
 
 .body {
-  padding: 0 1rem;
-  margin: auto;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
   min-width: 20rem;
   max-width: 80rem;
   min-height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  margin: auto;
+  padding: 0 1rem;
+
   color: var(--primary-color);
+
+  &:has(nav) {
+    overflow: hidden;
+  }
 
   @media (min-width: $breakpoint-md) {
     padding: 0 2rem;
@@ -30,24 +38,19 @@ html {
   @media (min-width: $breakpoint-lg) {
     padding: 0 5rem;
   }
-
-  &:has(nav) {
-    overflow: hidden;
-  }
-
-  &:has(main div#preview) {
-    overflow: hidden;
-  }
 }
 
 .link {
-  padding: 0;
-  margin: 0;
-  color: inherit;
-  font-family: inherit;
-  text-decoration: none;
-  opacity: 1;
   cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: inherit;
+  color: inherit;
+  text-decoration: none;
+
+  opacity: 1;
 
   &:hover {
     opacity: 0.6;
@@ -59,14 +62,17 @@ html {
 }
 
 .button {
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-  color: inherit;
-  font-family: inherit;
-  border: 0;
-  opacity: 1;
   cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: inherit;
+  color: inherit;
+
+  opacity: 1;
+  background-color: transparent;
+  border: 0;
 
   &:hover {
     opacity: 0.6;
