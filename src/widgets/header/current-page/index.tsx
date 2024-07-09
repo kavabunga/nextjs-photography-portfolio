@@ -10,8 +10,13 @@ export function CurrentPage() {
   const possiblePages = projectPagesCategories
     .map(({ name }) => name)
     .concat(infoPagesCategories.map(({ name }) => name));
-  const path = usePathname().split('/').slice(-1)[0];
-  const pageName = possiblePages.find((name) => name === path) ? path : null;
+  const path = usePathname()
+    .split('/')
+    .filter((x) => x);
+
+  const pageName =
+    possiblePages.find((name) => path.find((segment) => segment === name)) ||
+    null;
 
   return pageName && <CurrentPageUi {...{ pageName }} />;
 }
