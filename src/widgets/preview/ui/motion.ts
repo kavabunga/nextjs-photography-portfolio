@@ -1,6 +1,6 @@
 import type { MotionProps } from 'framer-motion';
 
-export const overlayAnimationVariants: MotionProps['variants'] = {
+export const previewAnimationVariants: MotionProps['variants'] = {
   hidden: {
     opacity: 0,
     transition: {
