@@ -81,11 +81,7 @@ export function NavigationWidgetUi({
           </motion.ul>
         )}
         {infoPages && (
-          <motion.ul
-            ref={infoLinksRef}
-            id="info-links"
-            className={classes.navigation__list}
-          >
+          <motion.ul ref={infoLinksRef} className={classes.navigation__list}>
             {infoPages.map((element) => (
               <motion.li
                 key={element.name}

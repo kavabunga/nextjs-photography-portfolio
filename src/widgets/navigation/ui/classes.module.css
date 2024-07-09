@@ -135,6 +135,10 @@
   @media (min-width: $breakpoint-lg) {
     right: 5.5rem;
   }
+
+  @media (min-width: $breakpoint-xl) {
+    right: calc((100% - 80rem) / 2 + 5.5rem);
+  }
 }
 
 .navigation__button {
@@ -142,8 +146,9 @@
 
   display: flex;
 
-  width: 3rem;
-  height: 3rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding: 0;
 
   color: var(--primary-color);
 
@@ -152,7 +157,7 @@
   box-shadow: none;
 
   @media (min-width: $breakpoint-md) {
-    width: 5.25rem;
-    height: 5.25rem;
+    width: 4.75rem;
+    height: 4.75rem;
   }
 }

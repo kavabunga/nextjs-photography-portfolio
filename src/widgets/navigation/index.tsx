@@ -19,7 +19,7 @@ export function NavigationWidget() {
     closeOverlay('navigation');
   }, [closeOverlay]);
 
-  const handleLinkToBottom = useCallback((targetId: string) => {
+  const scrollToBottom = useCallback((targetId: string) => {
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollTo(0, targetElement.scrollHeight);
@@ -32,7 +32,7 @@ export function NavigationWidget() {
       infoPages={infoPagesCategories}
       {...{ infoLinksRef }}
       {...{ isInView }}
-      onDownButton={handleLinkToBottom}
+      onDownButton={scrollToBottom}
       onClose={handleClose}
     />
   );
