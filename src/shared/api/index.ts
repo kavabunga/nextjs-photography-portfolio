@@ -1,6 +1,7 @@
 'use server';
 
 import { NextRequest } from 'next/server';
+import { IImageData } from '../types';
 
 interface IimgixApi extends Partial<NextRequest> {}
 
@@ -22,9 +23,8 @@ async function imgixApi({ url, ...options }: IimgixApi) {
 
   try {
     const response = await fetch(requestUrl, config);
-    const { data } = await response.json();
 
-    return data;
+    return response;
   } catch (error) {
     console.log('Error on fetching data: ', error);
   }
@@ -50,15 +50,42 @@ interface IgetAssetsApi {
 }
 
 export async function getAssetsApi({ key, value }: IgetAssetsApi) {
-  const url = `/assets${key ? `?filter[${key}]=${value}&sort=date_modified` : ''}`;
+  // NOTE: Get 100 assets per request
+  const url = `/assets${key ? `?filter[${key}]=${value}` : ''}&page[limit]=100&page[cursor]=0`;
 
   const options = {
     method: 'GET',
   };
 
-  const response = await imgixApi({ url, ...options });
+  const images: IImageData[] = [];
 
-  return response;
+  // NOTE: Reqursive function to get all paginated images at once from Imgix Api (if there are more assets then the limit selected before)
+  const getPaginatedResult = async (
+    requestUrl: string,
+    requestOptions: any
+  ) => {
+    const response = await imgixApi({ url: requestUrl, ...requestOptions });
+
+    if (!response) {
+      return;
+    }
+
+    const { data, meta } = await response.json();
+    images.push(...data);
+
+    if (meta?.cursor?.hasMore !== true || meta?.cursor?.next === null) {
+      return;
+    }
+
+    const regex = /(&page\[cursor\]=)(\d+)/;
+    const newUrl = url.replace(regex, `$1${meta.cursor.next}`);
+
+    await getPaginatedResult(newUrl, options);
+  };
+
+  await getPaginatedResult(url, options);
+
+  return images;
 }
 
 export async function getAssetApi(id: string) {
@@ -70,5 +97,11 @@ export async function getAssetApi(id: string) {
 
   const response = await imgixApi({ url, ...options });
 
-  return response;
+  if (!response) {
+    return null;
+  }
+
+  const { data } = await response.json();
+
+  return data;
 }
