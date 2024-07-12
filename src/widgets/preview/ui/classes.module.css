@@ -29,6 +29,7 @@
   flex-direction: row;
   gap: 1rem;
   align-items: flex-start;
+  align-self: stretch;
   justify-content: space-between;
 
   font-size: 0.75rem;

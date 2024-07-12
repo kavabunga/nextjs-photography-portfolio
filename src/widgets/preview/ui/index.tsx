@@ -27,7 +27,7 @@ export function PreviewWidgetUi({ category, ...asset }: IPreviewWidgetUi) {
           width={0}
           height={0}
           sizes="(min-width: 1280px) 1280px, 100vw"
-          quality={80}
+          quality={50}
           fill
           id={asset.attributes.origin_path}
           className={classes.preview__image}

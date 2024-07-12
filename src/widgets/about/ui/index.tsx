@@ -75,29 +75,19 @@ export function AboutWidgetUi({
       </div>
 
       {images && images[0] && (
-        <div
-          // initial="hidden"
-          // animate="visible"
-          // exit="hidden"
-          // variants={containerAnimationConfig}
-          className={classes.about__imagesContainer}
-        >
+        <div className={classes.about__imagesContainer}>
           {images.map((asset) => (
-            <div
-              // variants={imageAnimationConfig}
-              className={classes.about__imageContainer}
-              key={asset.id}
-            >
+            <div className={classes.about__imageContainer} key={asset.id}>
               <Image
                 src={asset.attributes.origin_path}
                 alt={
                   asset.attributes.custom_fields?.caption ||
                   asset.attributes.origin_path
                 }
-                width={asset.attributes.media_width || 300}
-                height={asset.attributes.media_height || 300}
+                width={asset.attributes.media_width || 0}
+                height={asset.attributes.media_height || 0}
                 sizes="100vw, (min-width: $breakpoint-xs) 40vw"
-                quality={70}
+                quality={50}
                 className={classes.about__image}
               />
             </div>

@@ -27,9 +27,9 @@ export function GalleryWidgetUi({ data, isGridOn, path }: IGalleryWidgetUi) {
           key={asset.id}
           className={clsx(
             classes.gallery__item,
-            classes[
-              `_orientation_${resolveImageOrientation({ width: asset.attributes.media_width, height: asset.attributes.media_height })}`
-            ],
+            classes[`_orientation_${resolveImageOrientation(asset)}`],
+            asset.attributes.custom_fields.layout &&
+              classes[`_layout_${asset.attributes.custom_fields.layout}`],
             isGridOn && classes._view_grid
           )}
         >
