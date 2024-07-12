@@ -1,0 +1,38 @@
+.gridButton {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.gridButton__button {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+  align-items: center;
+
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--secondary-color);
+}
+
+.gridButton__text {
+  display: none;
+
+  @media (min-width: $breakpoint-sm) {
+    display: block;
+  }
+}
+
+.gridButton__divider {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--secondary-color);
+}
+
+.gridButton__icon {
+  display: flex;
+  place-items: center center;
+}

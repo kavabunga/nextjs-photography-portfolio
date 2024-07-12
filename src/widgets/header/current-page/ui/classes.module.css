@@ -1,0 +1,21 @@
+.currentPage {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.currentPage__text {
+  display: inline-block;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
