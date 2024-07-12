@@ -22,7 +22,7 @@ interface IGalleryWidgetUi {
 export function GalleryWidgetUi({ data, isGridOn, path }: IGalleryWidgetUi) {
   return (
     <ul className={clsx(classes.gallery, isGridOn && classes._view_grid)}>
-      {data.map((asset: IImageData, index) => (
+      {data.map((asset: IImageData) => (
         <li
           key={asset.id}
           className={clsx(
@@ -48,12 +48,15 @@ export function GalleryWidgetUi({ data, isGridOn, path }: IGalleryWidgetUi) {
             <GalleryImageUi {...asset} {...{ isGridOn }} />
           </Link>
           {/* NOTE: Show caption if grid is off, asset has caption and it doesn't match the previous one */}
-          {!isGridOn &&
+          {/* {!isGridOn &&
             asset.attributes.custom_fields?.caption &&
             asset.attributes.custom_fields?.caption !==
               data[index - 1]?.attributes.custom_fields?.caption && (
               <CaptionWidget text={asset.attributes.custom_fields.caption} />
-            )}
+            )} */}
+          {!isGridOn && asset.attributes.custom_fields?.caption && (
+            <CaptionWidget text={asset.attributes.custom_fields.caption} />
+          )}
         </li>
       ))}
     </ul>
