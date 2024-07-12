@@ -130,8 +130,12 @@ export const projectPagesCategories: IprojectPageCategory[] = [
     name: 'enterprises',
     type: 'category',
     text: '',
-    wip: true,
-    metadata: {},
+    wip: false,
+    metadata: {
+      title: `${globalData.title} | Enterprises`,
+      description:
+        'Enterprise, business, R&D, technology and science photography by Semyon Katz',
+    },
   },
   {
     name: 'lifestyle',
