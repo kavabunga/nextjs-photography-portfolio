@@ -5,6 +5,7 @@ import { getAssetsApi } from '@/shared/api';
 import { globalData, projectPagesCategories } from '@/shared/data';
 
 import { GalleryWidget } from '@/widgets/gallery';
+import { sortImagesByOrder } from '@/shared/lib';
 
 interface IPhotographyProjectPage {
   params: { category: string };
@@ -45,5 +46,8 @@ export default async function PhotographyProjectPage({
 
   const data = await getAssetsApi({ key: 'categories', value: category });
 
-  return data && <GalleryWidget {...{ data }} {...{ category }} />;
+  // NOTE: Sort data by 'order' custom property
+  const sortedData = sortImagesByOrder(data);
+
+  return data && <GalleryWidget data={sortedData} {...{ category }} />;
 }
