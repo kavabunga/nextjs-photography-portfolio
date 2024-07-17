@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 
+import { blurhashToBase64 } from 'blurhash-base64';
+
 import clsx from 'clsx';
 
 import type { IAssetRichData } from '@/shared/types';
@@ -15,6 +17,8 @@ interface IGalleryImageUi extends IAssetRichData {
 export function GalleryImageUi({ isGridOn, ...asset }: IGalleryImageUi) {
   return (
     <Image
+      placeholder="blur"
+      blurDataURL={blurhashToBase64(asset.placeholder || '')}
       src={asset.attributes.origin_path}
       alt={
         asset.attributes.custom_fields?.caption || asset.attributes.origin_path
