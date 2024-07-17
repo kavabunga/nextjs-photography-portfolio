@@ -2,9 +2,9 @@ import { LoaderWidget } from '@/widgets/loader';
 
 import classes from './classes.module.css';
 
-export function GalleryLoaderContainerUi() {
+export default function Loading() {
   return (
-    <div className={classes.container}>
+    <div className={classes.loading__container}>
       <LoaderWidget />
     </div>
   );
