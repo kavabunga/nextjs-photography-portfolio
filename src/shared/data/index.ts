@@ -173,6 +173,7 @@ interface IinfoPage {
   name: string;
   title: string | null;
   text: string[] | null;
+  metadata: Metadata;
 }
 export interface IaboutPageData extends IinfoPage {
   clients: string[] | null;
@@ -193,6 +194,11 @@ export const aboutPageData: IaboutPageData = {
   rights: [
     'All Rights Reserved. Usage of\u00A0any of\u00A0the content of\u00A0this website or\u00A0of\u00A0any of\u00A0it\u2019s parts is\u00A0allowed only with a\u00A0written permission of\u00A0the Author \u00A9\u00A02024',
   ],
+  metadata: {
+    title: `${globalData.title} | About`,
+    description:
+      'Information about Semyon Katz, professional photographer and web developer',
+  },
 };
 export interface IlinksPageData extends IinfoPage {
   links: Ilink[] | null;
@@ -212,6 +218,10 @@ export const downloadsPageData: IlinksPageData = {
       text: '(15 Mb)',
     },
   ],
+  metadata: {
+    title: `${globalData.title} | Downloads`,
+    description: 'PDF portfolios and other files, shared by Semyon Katz',
+  },
 };
 
 export const contactsPageData: IlinksPageData = {
@@ -252,6 +262,10 @@ export const contactsPageData: IlinksPageData = {
       text: ' at social networks',
     },
   ],
+  metadata: {
+    title: `${globalData.title} | Contacts`,
+    description: 'Semyon Katz contacts',
+  },
 };
 
 export type IinfoPageCategory = IaboutPageData | IlinksPageData;

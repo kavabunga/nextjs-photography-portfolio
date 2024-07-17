@@ -1,6 +1,11 @@
 import { downloadsPageData } from '@/shared/data';
+
 import { DownloadsWidget } from '@/widgets/downloads';
 
-export default function Contacts() {
+export const metadata = {
+  ...downloadsPageData.metadata,
+};
+
+export default function Downloads() {
   return <DownloadsWidget {...downloadsPageData} />;
 }
