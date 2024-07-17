@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import fetchMock from 'jest-fetch-mock';
 import { render, screen } from '@testing-library/react';
 
-import type { IImageData } from '@/shared/types';
+import type { IAssetData } from '@/shared/types';
 
 import About from './page';
 
@@ -25,7 +25,7 @@ describe('About page layout', () => {
   });
 
   it('renders all ui components', async () => {
-    const mockData: IImageData[] | null = null;
+    const mockData: IAssetData[] | null = null;
     fetchMock.mockResponseOnce(JSON.stringify(mockData));
 
     const Tsx = await About();

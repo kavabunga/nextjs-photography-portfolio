@@ -1,13 +1,17 @@
 import { getAssetsApi } from '@/shared/api';
 import { aboutPageData } from '@/shared/data';
-import { sortImagesByOrder } from '@/shared/lib';
+import { getAssetsRichData, sortImagesByOrder } from '@/shared/lib';
 
 import { AboutWidget } from '@/widgets/about';
 
 export default async function About() {
-  const images = await getAssetsApi({ key: 'categories', value: 'about' });
+  const data = await getAssetsApi({ key: 'categories', value: 'about' });
 
-  const sortedImages = sortImagesByOrder(images);
+  // NOTE: Iterate through assets and get their extra data
+  const richData = await getAssetsRichData(data);
 
-  return <AboutWidget {...aboutPageData} images={sortedImages} />;
+  // NOTE: Sort assets by 'order' custom property
+  const sortedData = sortImagesByOrder(richData);
+
+  return <AboutWidget {...aboutPageData} images={sortedData} />;
 }

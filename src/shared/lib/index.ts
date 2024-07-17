@@ -1,6 +1,7 @@
-import { IImageData } from '../types';
+import { getAssetDataApi, getAssetPlaceholderApi } from '../api';
+import type { IAssetData, IAssetRichData } from '../types';
 
-interface IsortImagesByOrder extends Array<IImageData> {}
+interface IsortImagesByOrder extends Array<IAssetRichData> {}
 
 export function sortImagesByOrder(data: IsortImagesByOrder) {
   return data.sort((a, b) => {
@@ -12,4 +13,26 @@ export function sortImagesByOrder(data: IsortImagesByOrder) {
     }
     return -1;
   });
+}
+
+interface IgetAssetsRichData extends Array<IAssetData> {}
+
+export async function getAssetsRichData(
+  data: IgetAssetsRichData
+): Promise<Array<IAssetRichData>> {
+  const richData = await Promise.all(
+    data.map(async (item) => {
+      const metadata = await getAssetDataApi(item.attributes.origin_path);
+      const placeholder = await getAssetPlaceholderApi(
+        item.attributes.origin_path
+      );
+
+      return {
+        ...item,
+        metadata,
+        placeholder,
+      };
+    })
+  );
+  return richData;
 }

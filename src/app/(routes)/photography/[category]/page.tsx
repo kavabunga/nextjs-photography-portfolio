@@ -3,9 +3,9 @@ import { notFound } from 'next/navigation';
 
 import { getAssetsApi } from '@/shared/api';
 import { globalData, projectPagesCategories } from '@/shared/data';
+import { getAssetsRichData, sortImagesByOrder } from '@/shared/lib';
 
 import { GalleryWidget } from '@/widgets/gallery';
-import { sortImagesByOrder } from '@/shared/lib';
 
 interface IPhotographyProjectPage {
   params: { category: string };
@@ -44,10 +44,14 @@ export default async function PhotographyProjectPage({
     return notFound();
   }
 
+  // NOTE: Get assets for page's category
   const data = await getAssetsApi({ key: 'categories', value: category });
 
-  // NOTE: Sort data by 'order' custom property
-  const sortedData = sortImagesByOrder(data);
+  // NOTE: Iterate through assets and get their extra data
+  const richData = await getAssetsRichData(data);
+
+  // NOTE: Sort assets by 'order' custom property
+  const sortedData = sortImagesByOrder(richData);
 
   return data && <GalleryWidget data={sortedData} {...{ category }} />;
 }

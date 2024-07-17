@@ -4,12 +4,12 @@ import clsx from 'clsx';
 
 import { inter } from '@/shared/style';
 import type { IaboutPageData } from '@/shared/data';
-import type { IImageData } from '@/shared/types';
+import type { IAssetRichData } from '@/shared/types';
 
 import classes from './classes.module.css';
 
 interface IAboutWidgetUi extends IaboutPageData {
-  images: IImageData[] | null;
+  images: IAssetRichData[] | null;
 }
 
 export function AboutWidgetUi({

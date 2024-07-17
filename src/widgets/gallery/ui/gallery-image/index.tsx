@@ -4,11 +4,11 @@ import Image from 'next/image';
 
 import clsx from 'clsx';
 
-import type { IImageData } from '@/shared/types';
+import type { IAssetRichData } from '@/shared/types';
 
 import classes from './classes.module.css';
 
-interface IGalleryImageUi extends IImageData {
+interface IGalleryImageUi extends IAssetRichData {
   isGridOn: boolean;
 }
 
@@ -19,8 +19,8 @@ export function GalleryImageUi({ isGridOn, ...asset }: IGalleryImageUi) {
       alt={
         asset.attributes.custom_fields?.caption || asset.attributes.origin_path
       }
-      width={asset.attributes.media_width || 0}
-      height={asset.attributes.media_height || 0}
+      width={asset.attributes.media_width || asset.metadata.PixelWidth || 0}
+      height={asset.attributes.media_height || asset.metadata.PixelHeight || 0}
       sizes="(min-width: 1280px) 1280px, 100vw"
       quality={50}
       id={asset.attributes.origin_path}

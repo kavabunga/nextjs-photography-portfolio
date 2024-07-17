@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import type { IImageData } from '@/shared/types';
+import type { IAssetData } from '@/shared/types';
 
 import { PreviewWidget } from '@/widgets/preview';
 import { getAssetsApi } from '@/shared/api';
@@ -17,7 +17,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const imageName = decodeURIComponent(imagePath);
 
-  const assets: IImageData[] | null = await getAssetsApi({
+  const assets: IAssetData[] | null = await getAssetsApi({
     key: 'categories',
     value: category,
   });
@@ -43,7 +43,7 @@ export async function generateStaticParams({
 }: {
   params: { category: string };
 }) {
-  const data: IImageData[] | null = await getAssetsApi({
+  const data: IAssetData[] | null = await getAssetsApi({
     key: 'categories',
     value: category,
   });
@@ -69,7 +69,7 @@ export default async function PreviewPage({
 }: IPreviewPage) {
   const name = decodeURIComponent(imagePath);
 
-  const data: IImageData[] | null = await getAssetsApi({
+  const data: IAssetData[] | null = await getAssetsApi({
     key: 'categories',
     value: category,
   });

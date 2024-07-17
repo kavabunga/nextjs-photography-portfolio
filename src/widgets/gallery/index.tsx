@@ -1,12 +1,12 @@
 'use client';
 
 import { useViewMode } from '@/shared/providers';
-import type { IImageData } from '@/shared/types';
+import type { IAssetRichData } from '@/shared/types';
 
 import { GalleryWidgetUi } from './ui';
 
 interface IGalleryWidget {
-  data: IImageData[];
+  data: IAssetRichData[];
   category: string;
 }
 

@@ -6,7 +6,7 @@ import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 import clsx from 'clsx';
 
-import type { IImageData } from '@/shared/types';
+import type { IAssetRichData } from '@/shared/types';
 
 import { CaptionWidget } from '@/widgets/caption';
 
@@ -17,7 +17,7 @@ import { containerAnimationVariants, imageAnimationVariants } from './motion';
 import classes from './classes.module.css';
 
 interface IGalleryWidgetUi {
-  data: IImageData[];
+  data: IAssetRichData[];
   isGridOn: boolean;
   path: string;
 }
@@ -31,7 +31,7 @@ export function GalleryWidgetUi({ data, isGridOn, path }: IGalleryWidgetUi) {
         animate="visible"
         className={clsx(classes.gallery, isGridOn && classes._view_grid)}
       >
-        {data.map((asset: IImageData) => (
+        {data.map((asset: IAssetRichData) => (
           <m.li
             variants={imageAnimationVariants}
             key={asset.id}

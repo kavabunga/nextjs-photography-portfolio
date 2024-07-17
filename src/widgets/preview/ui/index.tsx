@@ -4,13 +4,13 @@ import Image from 'next/image';
 import clsx from 'clsx';
 
 import { inter } from '@/shared/style';
-import type { IImageData } from '@/shared/types';
+import type { IAssetData } from '@/shared/types';
 
 import { CaptionWidget } from '@/widgets/caption';
 
 import classes from './classes.module.css';
 
-interface IPreviewWidgetUi extends IImageData {
+interface IPreviewWidgetUi extends IAssetData {
   category: string;
 }
 
