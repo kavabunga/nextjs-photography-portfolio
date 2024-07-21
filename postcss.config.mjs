@@ -18,17 +18,17 @@ const config = {
       {
         variables: {
           // 380px
-          'breakpoint-xxs': '23.75em',
+          'breakpoint-xxs': '23.75rem',
           // 480px
-          'breakpoint-xs': '30em',
+          'breakpoint-xs': '30rem',
           // 600px
-          'breakpoint-sm': '37.5em',
+          'breakpoint-sm': '37.5rem',
           // 720px
-          'breakpoint-md': '45em',
+          'breakpoint-md': '45rem',
           // 1024px
-          'breakpoint-lg': '64em',
+          'breakpoint-lg': '64rem',
           // 1280px
-          'breakpoint-xl': '80em',
+          'breakpoint-xl': '80rem',
         },
       },
     ],
