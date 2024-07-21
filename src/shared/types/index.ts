@@ -52,10 +52,11 @@ interface IImageMetadata {
   IPTC?: {
     RecordVersion?: string;
     Byline?: Array<string>;
-    DateCreated: string;
-    Copyright: string;
-    Credit: string;
-    TimeCreated: string;
+    DateCreated?: string;
+    Copyright?: string;
+    Credit?: string;
+    Caption?: string;
+    TimeCreated?: string;
   };
   PixelWidth: number;
   TIFF?: {

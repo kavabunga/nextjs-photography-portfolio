@@ -1,17 +1,17 @@
-.animation {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
 .preview {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   gap: 1rem;
   align-items: center;
 
-  padding-bottom: 2rem;
+  padding: 2rem;
+
+  background-color: var(--background-color);
 }
 
 .preview__imageContainer {
@@ -49,13 +49,4 @@
   margin: 0;
   padding: 0;
   padding-right: 0.5rem;
-}
-
-.preview__closeButton {
-  font-size: inherit;
-  font-weight: 300;
-  line-height: inherit;
-  color: var(--primary-color);
-
-  border-bottom: 0.0625rem solid;
 }

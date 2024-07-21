@@ -1,9 +1,9 @@
 import { getAssetDataApi, getAssetPlaceholderApi } from '../api';
 import type { IAssetData, IAssetRichData } from '../types';
 
-interface IsortImagesByOrder extends Array<IAssetRichData> {}
-
-export function sortImagesByOrder(data: IsortImagesByOrder) {
+export function sortImagesByOrder<T extends (IAssetData | IAssetRichData)[]>(
+  data: T
+) {
   return data.sort((a, b) => {
     if (a.attributes.custom_fields.order && b.attributes.custom_fields.order) {
       return (
@@ -12,7 +12,24 @@ export function sortImagesByOrder(data: IsortImagesByOrder) {
       );
     }
     return -1;
-  });
+  }) as T;
+}
+
+interface IgetAssetRichData extends IAssetData {}
+
+export async function getAssetRichData(
+  asset: IgetAssetRichData
+): Promise<IAssetRichData> {
+  const metadata = await getAssetDataApi(asset.attributes.origin_path);
+  const placeholder = await getAssetPlaceholderApi(
+    asset.attributes.origin_path
+  );
+
+  return {
+    ...asset,
+    metadata,
+    placeholder,
+  };
 }
 
 interface IgetAssetsRichData extends Array<IAssetData> {}
@@ -20,19 +37,6 @@ interface IgetAssetsRichData extends Array<IAssetData> {}
 export async function getAssetsRichData(
   data: IgetAssetsRichData
 ): Promise<Array<IAssetRichData>> {
-  const richData = await Promise.all(
-    data.map(async (item) => {
-      const metadata = await getAssetDataApi(item.attributes.origin_path);
-      const placeholder = await getAssetPlaceholderApi(
-        item.attributes.origin_path
-      );
-
-      return {
-        ...item,
-        metadata,
-        placeholder,
-      };
-    })
-  );
+  const richData = await Promise.all(data.map(getAssetRichData));
   return richData;
 }

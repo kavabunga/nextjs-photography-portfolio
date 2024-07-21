@@ -3,10 +3,15 @@ import type { ComponentProps } from 'react';
 import classes from './classes.module.css';
 
 interface ICaptionWidgetUi extends ComponentProps<'p'> {
-  text: string;
+  text: string | null;
 }
 
 export function CaptionWidgetUi({ text, ...props }: ICaptionWidgetUi) {
+  // NOTE: If no text don't render anything
+  if (!text) {
+    return null;
+  }
+
   // NOTE: Check if the string contains ". For "
   const splitIndex = text.indexOf('. For ');
 
@@ -23,8 +28,8 @@ export function CaptionWidgetUi({ text, ...props }: ICaptionWidgetUi) {
   const beforeFor = text.slice(0, splitIndex + 1);
   const afterFor = text.slice(splitIndex + 2); // +2 to include the space after ". For "
 
-  // Replace spaces with non-breaking spaces in the highlighted part
-  const highlightedText = afterFor.replace(/ /g, '\u00A0');
+  // NOTE: Replace the first space with a non-breaking space in the highlighted part
+  const highlightedText = afterFor.replace(' ', '\u00A0');
 
   return (
     <p {...props} className={classes.caption}>
