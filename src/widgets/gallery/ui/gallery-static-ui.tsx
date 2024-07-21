@@ -12,7 +12,12 @@ export async function GalleryWidgetStaticUi({
   data,
   category,
 }: IGalleryWidgetStaticUi) {
-  return data.map((asset) => (
-    <GalleryItemStaticUi key={asset.id} {...asset} {...{ category }} />
+  return data.map((asset, index) => (
+    <GalleryItemStaticUi
+      key={asset.id}
+      {...asset}
+      {...{ category }}
+      isLcp={index === 0}
+    />
   ));
 }

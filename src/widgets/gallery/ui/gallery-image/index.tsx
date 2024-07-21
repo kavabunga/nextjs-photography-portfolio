@@ -11,12 +11,13 @@ import type { IAssetRichData } from '@/shared/types';
 import classes from './classes.module.css';
 
 interface IGalleryImageUi extends IAssetRichData {
-  // isGridOn: boolean;
+  isLcp: boolean;
 }
 
-export async function GalleryImageUi({ ...asset }: IGalleryImageUi) {
+export async function GalleryImageUi({ isLcp, ...asset }: IGalleryImageUi) {
   return (
     <Image
+      priority={isLcp}
       placeholder="blur"
       blurDataURL={blurhashToBase64(asset.placeholder || '')}
       src={asset.attributes.origin_path}
@@ -31,7 +32,6 @@ export async function GalleryImageUi({ ...asset }: IGalleryImageUi) {
       quality={50}
       id={asset.attributes.origin_path}
       className={classes.image}
-      // className={clsx(classes.image, isGridOn && classes._view_grid)}
     />
   );
 }

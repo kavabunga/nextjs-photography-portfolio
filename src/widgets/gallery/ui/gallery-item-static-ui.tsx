@@ -8,17 +8,19 @@ import { GalleryImageUi } from './gallery-image';
 
 interface IGalleryItemStaticUi extends IAssetData {
   category: string;
+  isLcp: boolean;
 }
 
 export async function GalleryItemStaticUi({
   category,
+  isLcp,
   ...asset
 }: IGalleryItemStaticUi) {
   const richAsset = await getAssetRichData(asset);
 
   return (
     <GalleryItemDynamicUi {...richAsset} {...{ category }}>
-      <GalleryImageUi {...richAsset} />
+      <GalleryImageUi {...richAsset} {...{ isLcp }} />
     </GalleryItemDynamicUi>
   );
 }

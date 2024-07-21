@@ -32,6 +32,7 @@ export function PreviewWidgetUi({
         >
           <div className={classes.preview__imageContainer}>
             <Image
+              priority
               src={asset.attributes.origin_path}
               alt={
                 asset.attributes.custom_fields.caption ||
