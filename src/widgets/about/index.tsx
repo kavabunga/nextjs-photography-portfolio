@@ -1,12 +1,14 @@
+'use server';
+
 import type { IaboutPageData } from '@/shared/data';
-import type { IAssetRichData } from '@/shared/types';
+import type { IAssetData } from '@/shared/types';
 
 import { AboutWidgetUi } from './ui';
 
 interface IAboutWidget extends IaboutPageData {
-  images: IAssetRichData[] | null;
+  images: IAssetData[] | null;
 }
 
-export function AboutWidget({ ...data }: IAboutWidget) {
+export async function AboutWidget(data: IAboutWidget) {
   return <AboutWidgetUi {...data} />;
 }
