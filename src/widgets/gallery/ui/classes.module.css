@@ -17,6 +17,14 @@
       grid-template-columns: repeat(6, 1fr);
       gap: 0.5rem;
     }
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      grid-template-columns: repeat(10, 1fr);
+    }
   }
 
   @media (min-width: $breakpoint-md) {
