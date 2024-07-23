@@ -47,9 +47,9 @@ export function NavigationWidgetUi({
         exit="exit"
         className={classes.navigation}
       >
-        <m.div className={classes.navigation__container}>
+        <div className={classes.navigation__container}>
           {projectPages && (
-            <m.ul className={classes.navigation__list}>
+            <ul className={classes.navigation__list}>
               {projectPages.map((element) => (
                 <m.li
                   variants={itemAnimationConfig}
@@ -79,10 +79,10 @@ export function NavigationWidgetUi({
                   )}
                 </m.li>
               ))}
-            </m.ul>
+            </ul>
           )}
           {infoPages && (
-            <m.ul ref={infoLinksRef} className={classes.navigation__list}>
+            <ul ref={infoLinksRef} className={classes.navigation__list}>
               {infoPages.map((element) => (
                 <m.li
                   key={element.name}
@@ -102,9 +102,9 @@ export function NavigationWidgetUi({
                   </Link>
                 </m.li>
               ))}
-            </m.ul>
+            </ul>
           )}
-          <m.div className={classes.navigation__buttonsGroup}>
+          <div className={classes.navigation__buttonsGroup}>
             <m.button
               type="button"
               initial="hidden"
@@ -130,8 +130,8 @@ export function NavigationWidgetUi({
                 <IconChevronDown size="100%" />
               </m.button>
             )}
-          </m.div>
-        </m.div>
+          </div>
+        </div>
       </m.nav>
     </LazyMotion>
   );
