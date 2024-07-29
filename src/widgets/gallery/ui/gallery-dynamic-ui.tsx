@@ -39,7 +39,7 @@ export function GalleryWidgetDynamicUi({
 
   // NOTE: Disable preview method
   const handleUnsetPreview = useCallback(() => {
-    window.history.pushState('', '', `/photography/${category}`);
+    window.history.pushState({}, '', `/photography/${category}`);
   }, [category]);
 
   // NOTE: Manage image preview via URL path watch
