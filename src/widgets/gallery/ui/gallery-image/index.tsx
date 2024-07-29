@@ -4,8 +4,6 @@ import Image from 'next/image';
 
 import { blurhashToBase64 } from 'blurhash-base64';
 
-// import clsx from 'clsx';
-
 import type { IAssetRichData } from '@/shared/types';
 
 import classes from './classes.module.css';
