@@ -25,7 +25,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={fira.className}>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''} />
       <body className="body">
         <OverlayContextProvider>
           <ViewModeContextProvider>
@@ -36,6 +35,7 @@ export default function RootLayout({
           </ViewModeContextProvider>
         </OverlayContextProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''} />
     </html>
   );
 }
