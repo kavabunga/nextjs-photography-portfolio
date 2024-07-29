@@ -74,15 +74,9 @@ export const globalMetadata: Metadata = {
     creator: '@kavabunga',
   },
   robots: {
-    // index: false,
-    // follow: true,
-    // nocache: true,
     googleBot: {
       index: true,
       noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
     },
   },
   // verification: {
@@ -185,7 +179,7 @@ export const aboutPageData: IaboutPageData = {
   title: null,
   text: [
     'Semyon Katz is\u00A0a\u00A0skilled professional photographer and a\u00A0web developer. Renowned for capturing images of\u00A0influential figures featured in\u00A0FORBES and delving into diverse projects, including technology, sports and education. Semyon is\u00A0a\u00A0versatile creative.',
-    'With a\u00A0Master\u2019s in\u00A0radio engineering and training from the Rodchenko School of\u00A0Photography and Yandex. Practicum, Semyon seamlessly integrates his skills of\u00A0photography and coding.',
+    'With a\u00A0Master\u2019s in\u00A0radio engineering and training from the Rodchenko School of\u00A0Photography and Yandex.Practicum, Semyon seamlessly integrates his skills of\u00A0photography and coding.',
     'Currently based in\u00A0Haifa, Israel, Semyon is\u00A0open to\u00A0global commissions. Beyond his technical skills, he\u00A0remains committed to\u00A0exploring new projects, focusing on\u00A0portrait and sport photography and web development and is\u00A0open to\u00A0volunteering opportunities.',
   ],
   clients: [
