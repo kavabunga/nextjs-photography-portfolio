@@ -1,12 +1,14 @@
 import Image from 'next/image';
 
+import clsx from 'clsx';
+
 import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 
 import type { IAssetRichData } from '@/shared/types';
+import { inter } from '@/shared/style';
 
 import { CaptionWidget } from '@/widgets/caption';
 
-import { BackButtonUi } from './back-button';
 import { previewAnimationVariants } from './motion';
 import classes from './classes.module.css';
 
@@ -50,7 +52,17 @@ export function PreviewWidgetUi({
           </div>
           <div className={classes.preview__infoContainer}>
             <CaptionWidget {...{ asset }} />
-            <BackButtonUi onClick={onClickBack} />
+            <button
+              type="button"
+              onClick={onClickBack}
+              className={clsx(
+                'button',
+                inter.className,
+                classes.preview__button
+              )}
+            >
+              Back
+            </button>
           </div>
         </m.div>
       </LazyMotion>
