@@ -45,13 +45,6 @@ export function GalleryItemDynamicUi({
         <ImageContainerButtonUi {...{ asset }} {...{ category }}>
           {children}
         </ImageContainerButtonUi>
-        {/* NOTE: Show caption if grid is off, asset has caption and it doesn't match the previous one */}
-        {/* {!isGridOn &&
-            asset.attributes.custom_fields?.caption &&
-            asset.attributes.custom_fields?.caption !==
-              data[index - 1]?.attributes.custom_fields?.caption && (
-              <CaptionWidget text={asset.attributes.custom_fields.caption} />
-            )} */}
         {!isGridOn && <CaptionWidget {...{ asset }} />}
       </m.li>
     </LazyMotion>
