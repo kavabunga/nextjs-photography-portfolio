@@ -16,7 +16,6 @@
   }
 
   @media (min-width: $breakpoint-md) {
-    padding: 4rem 1rem;
     font-size: 1.25rem;
   }
 }
