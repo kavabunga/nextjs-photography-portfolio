@@ -1,16 +1,12 @@
-import type { IImageData } from '@/shared/types';
+import type { IAssetRichData } from '@/shared/types';
 
 import { PreviewWidgetUi } from './ui';
-import { PreviewWidgetAnimation } from './ui/animation';
 
-interface IPreviewWidget extends IImageData {
+interface IPreviewWidget extends IAssetRichData {
   category: string;
+  onClickBack: () => void;
 }
 
 export function PreviewWidget(props: IPreviewWidget) {
-  return (
-    <PreviewWidgetAnimation>
-      <PreviewWidgetUi {...props} />
-    </PreviewWidgetAnimation>
-  );
+  return <PreviewWidgetUi {...props} />;
 }

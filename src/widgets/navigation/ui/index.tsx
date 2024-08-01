@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import clsx from 'clsx';
 
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 import { IconChevronDown, IconX } from '@tabler/icons-react';
 
@@ -37,100 +37,102 @@ export function NavigationWidgetUi({
   onClose,
 }: INavigationWidgetUi) {
   return (
-    <motion.nav
-      id="navigation"
-      data-testid="navigation"
-      variants={animationConfig}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-      className={classes.navigation}
-    >
-      <motion.div className={classes.navigation__container}>
-        {projectPages && (
-          <motion.ul className={classes.navigation__list}>
-            {projectPages.map((element) => (
-              <motion.li
-                variants={itemAnimationConfig}
-                className={classes.navigation__item}
-                key={element.name}
-              >
-                <Link
-                  className={clsx(
-                    'link',
-                    classes.navigation__link,
-                    element.wip && classes._inactive
-                  )}
-                  href={`/photography/${element.name.toLowerCase()}`}
-                  aria-disabled={element.wip}
-                  tabIndex={element.wip ? -1 : undefined}
-                  onClick={element.wip ? undefined : onClose}
+    <LazyMotion features={domAnimation}>
+      <m.nav
+        id="navigation"
+        data-testid="navigation"
+        variants={animationConfig}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        className={classes.navigation}
+      >
+        <div className={classes.navigation__container}>
+          {projectPages && (
+            <ul className={classes.navigation__list}>
+              {projectPages.map((element) => (
+                <m.li
+                  variants={itemAnimationConfig}
+                  className={classes.navigation__item}
+                  key={element.name}
                 >
-                  {element.name}
-                </Link>
-                {element.wip && (
-                  <motion.p
-                    variants={labelAnimationConfig}
-                    className={classes.navigation__itemLabel}
+                  <Link
+                    className={clsx(
+                      'link',
+                      classes.navigation__link,
+                      element.wip && classes._inactive
+                    )}
+                    href={`/photography/${element.name.toLowerCase()}`}
+                    aria-disabled={element.wip}
+                    tabIndex={element.wip ? -1 : undefined}
+                    onClick={element.wip ? undefined : onClose}
                   >
-                    Soon
-                  </motion.p>
-                )}
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-        {infoPages && (
-          <motion.ul ref={infoLinksRef} className={classes.navigation__list}>
-            {infoPages.map((element) => (
-              <motion.li
-                key={element.name}
-                variants={itemAnimationConfig}
-                className={classes.navigation__item}
-              >
-                <Link
-                  className={clsx(
-                    'link',
-                    classes.navigation__link,
-                    classes._size_small
+                    {element.name}
+                  </Link>
+                  {element.wip && (
+                    <m.p
+                      variants={labelAnimationConfig}
+                      className={classes.navigation__itemLabel}
+                    >
+                      Soon
+                    </m.p>
                   )}
-                  href={`/${element.name.toLowerCase()}`}
-                  onClick={onClose}
+                </m.li>
+              ))}
+            </ul>
+          )}
+          {infoPages && (
+            <ul ref={infoLinksRef} className={classes.navigation__list}>
+              {infoPages.map((element) => (
+                <m.li
+                  key={element.name}
+                  variants={itemAnimationConfig}
+                  className={classes.navigation__item}
                 >
-                  {element.name}
-                </Link>
-              </motion.li>
-            ))}
-          </motion.ul>
-        )}
-        <motion.div className={classes.navigation__buttonsGroup}>
-          <motion.button
-            type="button"
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={closeButtonAnimationConfig}
-            whileHover="hover"
-            className={clsx(classes.navigation__button)}
-            onClick={onClose}
-          >
-            <IconX size="100%" />
-          </motion.button>
-          {!isInView && (
-            <motion.button
+                  <Link
+                    className={clsx(
+                      'link',
+                      classes.navigation__link,
+                      classes._size_small
+                    )}
+                    href={`/${element.name.toLowerCase()}`}
+                    onClick={onClose}
+                  >
+                    {element.name}
+                  </Link>
+                </m.li>
+              ))}
+            </ul>
+          )}
+          <div className={classes.navigation__buttonsGroup}>
+            <m.button
               type="button"
               initial="hidden"
               animate="visible"
               exit="hidden"
-              variants={downButtonAnimationConfig}
+              variants={closeButtonAnimationConfig}
+              whileHover="hover"
               className={clsx(classes.navigation__button)}
-              onClick={() => onDownButton('navigation')}
+              onClick={onClose}
             >
-              <IconChevronDown size="100%" />
-            </motion.button>
-          )}
-        </motion.div>
-      </motion.div>
-    </motion.nav>
+              <IconX size="100%" />
+            </m.button>
+            {!isInView && (
+              <m.button
+                type="button"
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={downButtonAnimationConfig}
+                className={clsx(classes.navigation__button)}
+                onClick={() => onDownButton('navigation')}
+              >
+                <IconChevronDown size="100%" />
+              </m.button>
+            )}
+          </div>
+        </div>
+      </m.nav>
+    </LazyMotion>
   );
 }

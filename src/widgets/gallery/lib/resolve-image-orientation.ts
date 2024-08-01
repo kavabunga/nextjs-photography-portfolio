@@ -1,16 +1,21 @@
-import { IImageData } from '@/shared/types';
+import type { IAssetRichData } from '@/shared/types';
 
-interface IresolveImageOrientation extends IImageData {}
+interface IresolveImageOrientation extends IAssetRichData {}
 
 export function resolveImageOrientation({
+  metadata: { PixelHeight, PixelWidth },
   attributes: {
-    media_width: width,
-    media_height: height,
+    media_width,
+    media_height,
     custom_fields: { isVertical },
   },
 }: IresolveImageOrientation) {
-  if (width && height) {
-    return width > height ? 'horizontal' : 'vertical';
+  if (media_width && media_height) {
+    return media_width > media_height ? 'horizontal' : 'vertical';
+  }
+
+  if (PixelHeight && PixelWidth) {
+    return PixelWidth > PixelHeight ? 'horizontal' : 'vertical';
   }
 
   if (isVertical) {

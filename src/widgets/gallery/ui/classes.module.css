@@ -1,6 +1,6 @@
 .gallery {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   row-gap: 3rem;
 
   margin: 0;
@@ -11,16 +11,24 @@
 
   &._view_grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.25rem 0.25rem;
+    gap: 0.25rem;
 
     @media (min-width: $breakpoint-xs) {
       grid-template-columns: repeat(6, 1fr);
-      gap: 0.5rem 0.5rem;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      grid-template-columns: repeat(10, 1fr);
     }
   }
 
-  @media (min-width: $breakpoint-md) {
-    grid-template-columns: 1fr 1fr;
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 45%);
     gap: 4rem 10%;
   }
 }
@@ -33,14 +41,19 @@
   margin: 0;
   padding: 0;
 
-  /* &._orientation_vertical:nth-of-type(4n) {
-    padding: 15%;
-  } */
   &._layout_small {
     padding: 15%;
   }
 
-  @media (min-width: $breakpoint-md) {
+  &._orientation_horizontal {
+    &._layout_small {
+      grid-column: span 1;
+      grid-row: span 1;
+      padding: 0;
+    }
+  }
+
+  @media (min-width: $breakpoint-sm) {
     &._orientation_horizontal {
       grid-column: span 2;
       grid-row: span 1;
@@ -49,10 +62,6 @@
     &._orientation_vertical {
       grid-column: span 1;
       grid-row: span 2;
-
-      /* &:nth-of-type(4n) {
-        padding: 25%;
-      } */
     }
 
     &._layout_small {
@@ -61,14 +70,23 @@
   }
 }
 
+.gallery__imageContainer {
+  cursor: pointer;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: inherit;
+  color: inherit;
+
+  background-color: transparent;
+  border: 0;
+}
+
 ._view_grid {
   grid-row: span 1;
   margin: 0;
   padding: 0;
-
-  /* &:nth-of-type(4n) {
-    padding: 0;
-  } */
 
   &._layout_small {
     padding: 0;
@@ -81,6 +99,12 @@
   &._orientation_horizontal {
     grid-column: span 2;
     grid-row: span 1;
+
+    &._layout_small {
+      grid-column: span 2;
+      grid-row: span 1;
+      padding: 0;
+    }
   }
 
   .gallery__imageContainer {

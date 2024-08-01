@@ -1,4 +1,4 @@
-export interface IImageData {
+export interface IAssetData {
   attributes: {
     analyzed_content_warnings: boolean;
     analyzed_faces: boolean;
@@ -38,8 +38,68 @@ export interface IImageData {
   type: string;
 }
 
-export interface IImagesCollectionData {
-  data: IImageData[] | null;
+interface IImageMetadata {
+  Exif: {
+    PixelYDimension: number;
+    PixelXDimension: number;
+    ColorSpace: number;
+    ExifVersion: string;
+  };
+  Orientation: number;
+  'Content-Type'?: string;
+  Output?: Object;
+  'Content-Length'?: string;
+  IPTC?: {
+    RecordVersion?: string;
+    Byline?: Array<string>;
+    DateCreated?: string;
+    Copyright?: string;
+    Credit?: string;
+    Caption?: string;
+    TimeCreated?: string;
+  };
+  PixelWidth: number;
+  TIFF?: {
+    PhotometricInterpretation?: number;
+    ExifTag?: number;
+    Software?: string;
+    ResolutionUnit?: number;
+    YResolution?: number;
+    DateTime?: string;
+    XResolution?: number;
+    ImageWidth?: number;
+    ImageLength?: number;
+    Orientation?: number;
+    SamplesPerPixel?: number;
+    BitsPerSample?: Array<number>;
+  };
+  PixelHeight: number;
+  XMP?: {
+    Prefs?: string;
+    format?: string;
+    CreatorContactInfo?: string;
+    MetadataDate?: string;
+    creator?: string;
+    Tagged?: string;
+    Rating?: string;
+    Credit?: string;
+    Marked?: string;
+    CreateDate?: string;
+    ModifyDate?: string;
+
+    DateCreated?: string;
+  };
+  GPS?: Object;
+  ProfileName?: string;
+}
+
+export interface IAssetRichData extends IAssetData {
+  metadata: IImageMetadata;
+  placeholder: string | null;
+}
+
+export interface IAssetsCollectionData {
+  data: IAssetData[] | null;
   included: any[];
   jsonapi: { [key: string]: string };
   meta: {

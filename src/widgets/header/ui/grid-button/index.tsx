@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 
-import { motion } from 'framer-motion';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 import {
   IconLayoutGridFilled,
@@ -21,27 +21,29 @@ export function GridButtonUi({
 }: IToggleGridViewFeatureTriggerUi) {
   return (
     visible && (
-      <div className={classes.gridButton}>
-        <motion.button
-          initial="start"
-          animate="end"
-          whileHover="hover"
-          className={clsx('button', classes.gridButton__button)}
-          type="button"
-          onClick={props.onClick}
-        >
-          <motion.div
-            className={classes.gridButton__icon}
-            variants={gridAntimationVariants}
+      <LazyMotion features={domAnimation}>
+        <div className={classes.gridButton}>
+          <m.button
+            initial="start"
+            animate="end"
+            whileHover="hover"
+            className={clsx('button', classes.gridButton__button)}
+            type="button"
+            onClick={props.onClick}
           >
-            {isGridOn ? <IconLayoutListFilled /> : <IconLayoutGridFilled />}
-          </motion.div>
-          <span className={classes.gridButton__text}>
-            {isGridOn ? 'Feed' : 'Grid'}
-          </span>
-        </motion.button>
-        <span className={classes.gridButton__divider}>|</span>
-      </div>
+            <m.div
+              className={classes.gridButton__icon}
+              variants={gridAntimationVariants}
+            >
+              {isGridOn ? <IconLayoutListFilled /> : <IconLayoutGridFilled />}
+            </m.div>
+            <span className={classes.gridButton__text}>
+              {isGridOn ? 'Feed' : 'Grid'}
+            </span>
+          </m.button>
+          <span className={classes.gridButton__divider}>|</span>
+        </div>
+      </LazyMotion>
     )
   );
 }

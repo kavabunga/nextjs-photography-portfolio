@@ -3,7 +3,7 @@ import type { MotionProps } from 'framer-motion';
 export const containerAnimationConfig: MotionProps['variants'] = {
   visible: {
     transition: {
-      staggerChildren: 0.9,
+      staggerChildren: 0.7,
     },
   },
 };

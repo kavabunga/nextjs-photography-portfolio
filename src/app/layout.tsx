@@ -1,3 +1,6 @@
+import type { Viewport } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import { globalMetadata } from '@/shared/data';
 import {
   OverlayContextProvider,
@@ -8,8 +11,6 @@ import '@/shared/style/globals.css';
 
 import { NavigationWidget } from '@/widgets/navigation';
 import { OverlayWidget } from '@/widgets/overlay';
-
-import type { Viewport } from 'next';
 
 export const metadata = globalMetadata;
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           </ViewModeContextProvider>
         </OverlayContextProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''} />
     </html>
   );
 }

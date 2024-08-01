@@ -4,10 +4,8 @@ export const animationConfig: MotionProps['variants'] = {
   visible: {
     opacity: 1,
     transition: {
-      opacity: {
-        duration: 0.2,
-      },
       when: 'beforeChildren',
+      duration: 0.2,
       staggerChildren: 0.07,
     },
   },
@@ -18,6 +16,7 @@ export const animationConfig: MotionProps['variants'] = {
     opacity: 0,
     transition: {
       when: 'afterChildren',
+      duration: 0.1,
       staggerChildren: 0.04,
     },
   },
@@ -28,7 +27,7 @@ export const itemAnimationConfig: MotionProps['variants'] = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.35,
     },
   },
   hidden: {
@@ -37,10 +36,8 @@ export const itemAnimationConfig: MotionProps['variants'] = {
   },
   exit: {
     opacity: 0,
-    x: -100,
     transition: {
-      opacity: { duration: 0.2 },
-      x: { duration: 0.3 },
+      duration: 0.15,
     },
   },
 };

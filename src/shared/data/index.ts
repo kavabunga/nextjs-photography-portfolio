@@ -74,15 +74,9 @@ export const globalMetadata: Metadata = {
     creator: '@kavabunga',
   },
   robots: {
-    // index: false,
-    // follow: true,
-    // nocache: true,
     googleBot: {
       index: true,
       noimageindex: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
     },
   },
   // verification: {
@@ -173,6 +167,7 @@ interface IinfoPage {
   name: string;
   title: string | null;
   text: string[] | null;
+  metadata: Metadata;
 }
 export interface IaboutPageData extends IinfoPage {
   clients: string[] | null;
@@ -184,7 +179,7 @@ export const aboutPageData: IaboutPageData = {
   title: null,
   text: [
     'Semyon Katz is\u00A0a\u00A0skilled professional photographer and a\u00A0web developer. Renowned for capturing images of\u00A0influential figures featured in\u00A0FORBES and delving into diverse projects, including technology, sports and education. Semyon is\u00A0a\u00A0versatile creative.',
-    'With a\u00A0Master\u2019s in\u00A0radio engineering and training from the Rodchenko School of\u00A0Photography and Yandex. Practicum, Semyon seamlessly integrates his skills of\u00A0photography and coding.',
+    'With a\u00A0Master\u2019s in\u00A0radio engineering and training from the Rodchenko School of\u00A0Photography and Yandex.Practicum, Semyon seamlessly integrates his skills of\u00A0photography and coding.',
     'Currently based in\u00A0Haifa, Israel, Semyon is\u00A0open to\u00A0global commissions. Beyond his technical skills, he\u00A0remains committed to\u00A0exploring new projects, focusing on\u00A0portrait and sport photography and web development and is\u00A0open to\u00A0volunteering opportunities.',
   ],
   clients: [
@@ -193,6 +188,11 @@ export const aboutPageData: IaboutPageData = {
   rights: [
     'All Rights Reserved. Usage of\u00A0any of\u00A0the content of\u00A0this website or\u00A0of\u00A0any of\u00A0it\u2019s parts is\u00A0allowed only with a\u00A0written permission of\u00A0the Author \u00A9\u00A02024',
   ],
+  metadata: {
+    title: `${globalData.title} | About`,
+    description:
+      'Information about Semyon Katz, professional photographer and web developer',
+  },
 };
 export interface IlinksPageData extends IinfoPage {
   links: Ilink[] | null;
@@ -206,12 +206,24 @@ export const downloadsPageData: IlinksPageData = {
     {
       type: 'pdf',
       link: {
-        url: 'https://semyonkatz.imgix.net/pdfs/Semyon Katz business portraiture portfolio.pdf',
-        text: 'Business photography portfolio',
+        url: 'https://semyonkatz.imgix.net/pdfs/Semyon Katz, official portraiture portfolio.pdf',
+        text: 'Official portraiture portfolio',
       },
       text: '(15 Mb)',
     },
+    {
+      type: 'pdf',
+      link: {
+        url: 'https://semyonkatz.imgix.net/pdfs/Semyon Katz, enterprise photography portfolio.pdf',
+        text: 'Enterprise photography portfolio',
+      },
+      text: '(23 Mb)',
+    },
   ],
+  metadata: {
+    title: `${globalData.title} | Downloads`,
+    description: 'PDF portfolios and other files, shared by Semyon Katz',
+  },
 };
 
 export const contactsPageData: IlinksPageData = {
@@ -252,6 +264,10 @@ export const contactsPageData: IlinksPageData = {
       text: ' at social networks',
     },
   ],
+  metadata: {
+    title: `${globalData.title} | Contacts`,
+    description: 'Semyon Katz contacts',
+  },
 };
 
 export type IinfoPageCategory = IaboutPageData | IlinksPageData;

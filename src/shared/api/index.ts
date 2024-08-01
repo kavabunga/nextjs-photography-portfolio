@@ -1,7 +1,7 @@
 'use server';
 
 import { NextRequest } from 'next/server';
-import { IImageData } from '../types';
+import { IAssetData } from '../types';
 
 interface IimgixApi extends Partial<NextRequest> {}
 
@@ -57,7 +57,7 @@ export async function getAssetsApi({ key, value }: IgetAssetsApi) {
     method: 'GET',
   };
 
-  const images: IImageData[] = [];
+  const images: IAssetData[] = [];
 
   // NOTE: Reqursive function to get all paginated images at once from Imgix Api (if there are more assets then the limit selected before)
   const getPaginatedResult = async (
@@ -104,4 +104,52 @@ export async function getAssetApi(id: string) {
   const { data } = await response.json();
 
   return data;
+}
+
+export async function getAssetDataApi(originPath: string) {
+  const imagesUrl = process.env.NEXT_PUBLIC_IMAGES_SRC;
+
+  const url = `${imagesUrl}${originPath}?fm=json`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+    });
+
+    if (!response) {
+      return null;
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log('Error on fetching data: ', error);
+  }
+
+  return null;
+}
+
+export async function getAssetPlaceholderApi(originPath: string) {
+  const imagesUrl = process.env.NEXT_PUBLIC_IMAGES_SRC;
+
+  const url = `${imagesUrl}${originPath}?fm=blurhash&w=32`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+    });
+
+    if (!response) {
+      return null;
+    }
+
+    const data = await response.text();
+
+    return data;
+  } catch (error) {
+    console.log('Error on fetching data: ', error);
+  }
+
+  return null;
 }

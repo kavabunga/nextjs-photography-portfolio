@@ -7,7 +7,6 @@ interface ICurrentPageUi {
 export function CurrentPageUi({ pageName }: ICurrentPageUi) {
   return (
     <div className={classes.currentPage}>
-      <span>|</span>
       <span className={classes.currentPage__text}>{pageName}</span>
     </div>
   );

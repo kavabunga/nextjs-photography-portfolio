@@ -1,17 +1,25 @@
-.animation {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
 .preview {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   gap: 1rem;
   align-items: center;
 
-  padding-bottom: 2rem;
+  padding: 1rem;
+
+  background-color: var(--background-color);
+
+  @media (min-width: $breakpoint-md) {
+    padding: 2rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 2rem 5rem;
+  }
 }
 
 .preview__imageContainer {
@@ -29,8 +37,10 @@
   flex-direction: row;
   gap: 1rem;
   align-items: flex-start;
-  align-self: stretch;
   justify-content: space-between;
+
+  width: 100%;
+  max-width: calc($breakpoint-xl - 10rem);
 
   font-size: 0.75rem;
   font-weight: 400;
@@ -51,7 +61,7 @@
   padding-right: 0.5rem;
 }
 
-.preview__closeButton {
+.preview__button {
   font-size: inherit;
   font-weight: 300;
   line-height: inherit;

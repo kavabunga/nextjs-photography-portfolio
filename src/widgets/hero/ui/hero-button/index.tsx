@@ -4,14 +4,14 @@ import clsx from 'clsx';
 
 import classes from './classes.module.css';
 
-interface IHeroButtonUi extends ComponentProps<'button'> {
+interface IHeroButtonUi extends ComponentProps<'span'> {
   label: string;
 }
 
-export function HeroButtonUi({ type, label, ...props }: IHeroButtonUi) {
+export function HeroButtonUi({ label, ...props }: IHeroButtonUi) {
   return (
-    <button type="button" {...props} className={clsx('button', classes.button)}>
+    <span {...props} className={clsx('link', classes.button)}>
       {label}
-    </button>
+    </span>
   );
 }

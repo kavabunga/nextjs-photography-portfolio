@@ -1,19 +1,15 @@
-'use client';
+'use server';
 
-import { useViewMode } from '@/shared/providers';
-import type { IImageData } from '@/shared/types';
+import type { IAssetData, IAssetRichData } from '@/shared/types';
 
 import { GalleryWidgetUi } from './ui';
 
 interface IGalleryWidget {
-  data: IImageData[];
+  data: IAssetData[];
   category: string;
+  selectedAsset: IAssetRichData | undefined;
 }
 
-export function GalleryWidget({ data, category }: IGalleryWidget) {
-  const { pagesGridModes } = useViewMode();
-  const isGridOn = pagesGridModes?.[category] || false;
-
-  // TODO: Add something for empty data
-  return <GalleryWidgetUi {...{ data }} {...{ isGridOn }} path={category} />;
+export async function GalleryWidget(props: IGalleryWidget) {
+  return <GalleryWidgetUi {...props} />;
 }

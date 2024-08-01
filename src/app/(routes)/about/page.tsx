@@ -4,10 +4,15 @@ import { sortImagesByOrder } from '@/shared/lib';
 
 import { AboutWidget } from '@/widgets/about';
 
+export const metadata = {
+  ...aboutPageData.metadata,
+};
+
 export default async function About() {
-  const images = await getAssetsApi({ key: 'categories', value: 'about' });
+  const data = await getAssetsApi({ key: 'categories', value: 'about' });
 
-  const sortedImages = sortImagesByOrder(images);
+  // NOTE: Sort assets by 'order' custom property
+  const sortedData = sortImagesByOrder(data);
 
-  return <AboutWidget {...aboutPageData} images={sortedImages} />;
+  return <AboutWidget {...aboutPageData} images={sortedData} />;
 }
