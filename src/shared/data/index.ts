@@ -206,10 +206,18 @@ export const downloadsPageData: IlinksPageData = {
     {
       type: 'pdf',
       link: {
-        url: 'https://semyonkatz.imgix.net/pdfs/Semyon Katz business portraiture portfolio.pdf',
-        text: 'Business photography portfolio',
+        url: 'https://semyonkatz.imgix.net/pdfs/Semyon Katz, official portraiture portfolio.pdf',
+        text: 'Official portraiture portfolio',
       },
       text: '(15 Mb)',
+    },
+    {
+      type: 'pdf',
+      link: {
+        url: 'https://semyonkatz.imgix.net/pdfs/Semyon Katz, enterprise photography portfolio.pdf',
+        text: 'Enterprise photography portfolio',
+      },
+      text: '(23 Mb)',
     },
   ],
   metadata: {
